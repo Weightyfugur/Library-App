@@ -13,70 +13,70 @@ namespace LibraryApp.Shared
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\Swango\source\repos\Library Website\LibraryApp\_Imports.razor"
+#line 1 "Z:\Swango\Desktop\GitHub Repositories\Library-App\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\Swango\source\repos\Library Website\LibraryApp\_Imports.razor"
+#line 2 "Z:\Swango\Desktop\GitHub Repositories\Library-App\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\Swango\source\repos\Library Website\LibraryApp\_Imports.razor"
+#line 3 "Z:\Swango\Desktop\GitHub Repositories\Library-App\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\Swango\source\repos\Library Website\LibraryApp\_Imports.razor"
+#line 4 "Z:\Swango\Desktop\GitHub Repositories\Library-App\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\Swango\source\repos\Library Website\LibraryApp\_Imports.razor"
+#line 5 "Z:\Swango\Desktop\GitHub Repositories\Library-App\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\Swango\source\repos\Library Website\LibraryApp\_Imports.razor"
+#line 6 "Z:\Swango\Desktop\GitHub Repositories\Library-App\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\Swango\source\repos\Library Website\LibraryApp\_Imports.razor"
+#line 7 "Z:\Swango\Desktop\GitHub Repositories\Library-App\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\Swango\source\repos\Library Website\LibraryApp\_Imports.razor"
+#line 8 "Z:\Swango\Desktop\GitHub Repositories\Library-App\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\Swango\source\repos\Library Website\LibraryApp\_Imports.razor"
+#line 9 "Z:\Swango\Desktop\GitHub Repositories\Library-App\_Imports.razor"
 using LibraryApp;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\Swango\source\repos\Library Website\LibraryApp\_Imports.razor"
+#line 10 "Z:\Swango\Desktop\GitHub Repositories\Library-App\_Imports.razor"
 using LibraryApp.Shared;
 
 #line default
@@ -90,7 +90,7 @@ using LibraryApp.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 12 "C:\Users\Swango\source\repos\Library Website\LibraryApp\Shared\SurveyPrompt.razor"
+#line 12 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Shared\SurveyPrompt.razor"
        
     // Demonstrates how a parent component can supply parameters
     [Parameter]

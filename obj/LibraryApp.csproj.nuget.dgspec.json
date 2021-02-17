@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Swango\\source\\repos\\Library Website\\LibraryApp\\LibraryApp.csproj": {}
+    "Z:\\Swango\\Desktop\\GitHub Repositories\\Library-App\\LibraryApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Swango\\source\\repos\\Library Website\\LibraryApp\\LibraryApp.csproj": {
+    "Z:\\Swango\\Desktop\\GitHub Repositories\\Library-App\\LibraryApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Swango\\source\\repos\\Library Website\\LibraryApp\\LibraryApp.csproj",
+        "projectUniqueName": "Z:\\Swango\\Desktop\\GitHub Repositories\\Library-App\\LibraryApp.csproj",
         "projectName": "LibraryApp",
-        "projectPath": "C:\\Users\\Swango\\source\\repos\\Library Website\\LibraryApp\\LibraryApp.csproj",
+        "projectPath": "Z:\\Swango\\Desktop\\GitHub Repositories\\Library-App\\LibraryApp.csproj",
         "packagesPath": "C:\\Users\\Swango\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Swango\\source\\repos\\Library Website\\LibraryApp\\obj\\",
+        "outputPath": "Z:\\Swango\\Desktop\\GitHub Repositories\\Library-App\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Swango\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,18 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

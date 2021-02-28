@@ -236,3 +236,5 @@ C:\Users\calan\Documents\GitHub\library\Library-App\obj\Debug\net5.0\LibraryApp.
 C:\Users\calan\Documents\GitHub\library\Library-App\obj\Debug\net5.0\ref\LibraryApp.dll
 C:\Users\calan\Documents\GitHub\library\Library-App\obj\Debug\net5.0\LibraryApp.pdb
 C:\Users\calan\Documents\GitHub\library\Library-App\obj\Debug\net5.0\LibraryApp.genruntimeconfig.cache
+C:\Users\calan\Documents\GitHub\library\Library-App\obj\Debug\net5.0\RazorDeclaration\Pages\Search.razor.g.cs
+C:\Users\calan\Documents\GitHub\library\Library-App\obj\Debug\net5.0\Razor\Pages\Search.razor.g.cs

@@ -91,9 +91,10 @@ using LibraryApp.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 9 "C:\Users\calan\Documents\GitHub\library\Library-App\Pages\Counter.razor"
+#line 16 "C:\Users\calan\Documents\GitHub\library\Library-App\Pages\Counter.razor"
        
     private int currentCount = 0;
+    private string bookName = "";
 
     private void IncrementCount()
     {

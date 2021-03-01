@@ -82,6 +82,13 @@ using LibraryApp.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 11 "Z:\Swango\Desktop\GitHub Repositories\Library-App\_Imports.razor"
+using LibraryApp.Data;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/search")]
     public partial class Search : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -90,6 +97,25 @@ using LibraryApp.Shared;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 14 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Pages\Search.razor"
+ 
+	public string searchString;
+
+	List<Book> bookResult = new List<Book>();
+
+	void search(ChangeEventArgs s) {
+		bookResult = connection.Books.Where(b => b.Title.Contains(s.Value.ToString())).ToList();
+
+		StateHasChanged();
+	}
+
+
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private LibraryDBContext connection { get; set; }
     }
 }
 #pragma warning restore 1591

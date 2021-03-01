@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace LibraryApp.Data
 {
     public class LibraryDBContext : DbContext
@@ -16,17 +17,8 @@ namespace LibraryApp.Data
         }
 
         // makes table called 'Books'. Data will be passed into class 'Book'
-        //public Dbset<Book> Books {get; set; }
+        public DbSet<Book> Books {get; set; }
 
     }
 }
-
-
-//public class Book
-//{
-//    // properties
-//    int id;
-//    string name;
-    
-//}
 

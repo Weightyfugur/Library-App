@@ -82,6 +82,13 @@ using LibraryApp.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 11 "Z:\Swango\Desktop\GitHub Repositories\Library-App\_Imports.razor"
+using LibraryApp.Data;
+
+#line default
+#line hidden
+#nullable disable
     public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -90,7 +97,7 @@ using LibraryApp.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 28 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Shared\NavMenu.razor"
+#line 33 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Shared\NavMenu.razor"
        
     private bool collapseNavMenu = true;
 

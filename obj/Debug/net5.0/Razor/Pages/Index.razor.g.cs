@@ -79,6 +79,13 @@ using LibraryApp.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 11 "Z:\Swango\Desktop\GitHub Repositories\Library-App\_Imports.razor"
+using LibraryApp.Data;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/")]
     public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
     {

@@ -82,6 +82,14 @@ using LibraryApp.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 11 "Z:\Swango\Desktop\GitHub Repositories\Library-App\_Imports.razor"
+using LibraryApp.Data;
+
+#line default
+#line hidden
+#nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/book/edit")]
     public partial class Edit : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998

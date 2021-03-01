@@ -82,7 +82,14 @@ using LibraryApp.Shared;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/Book/Create")]
+#nullable restore
+#line 11 "Z:\Swango\Desktop\GitHub Repositories\Library-App\_Imports.razor"
+using LibraryApp.Data;
+
+#line default
+#line hidden
+#nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/book/create")]
     public partial class Create : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -91,13 +98,27 @@ using LibraryApp.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 12 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Pages\Create.razor"
+#line 37 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Pages\Create.razor"
        
-	private string bookName = "Enter Book Name Here";
+	public Book newBook = new Book();
+	string Status;
+
+	void FormSubmitted() {
+
+		// Makes a connection to the database and adds a new book, saves changes
+		//connection.Books.Add(newBook);
+		connection.Entry(newBook).State = Microsoft.EntityFrameworkCore.EntityState.Added;
+		connection.SaveChanges();
+
+		nav.NavigateTo(nav.Uri, forceLoad:true);
+		
+	}
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager nav { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private LibraryDBContext connection { get; set; }
     }
 }
 #pragma warning restore 1591

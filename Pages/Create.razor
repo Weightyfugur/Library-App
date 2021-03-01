@@ -1,0 +1,14 @@
+﻿@page "/Book/Create"
+
+<div style="text-align: center;">
+	<h2>Book Addition/Deletion Form</h2>
+	<p>Enter the book's name:</p>
+	<input type="search" @bind-value="@bookName" class="btn btn-default"><br />
+	<button class="btn btn-primary">Add/Delete</button>
+</div>
+
+
+
+@code {
+	private string bookName = "Enter Book Name Here";
+}

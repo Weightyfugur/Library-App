@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\calan\\Documents\\GitHub\\library\\Library-App\\LibraryApp.csproj": {}
+    "Z:\\Swango\\Desktop\\GitHub Repositories\\Library-App\\LibraryApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\calan\\Documents\\GitHub\\library\\Library-App\\LibraryApp.csproj": {
+    "Z:\\Swango\\Desktop\\GitHub Repositories\\Library-App\\LibraryApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\calan\\Documents\\GitHub\\library\\Library-App\\LibraryApp.csproj",
+        "projectUniqueName": "Z:\\Swango\\Desktop\\GitHub Repositories\\Library-App\\LibraryApp.csproj",
         "projectName": "LibraryApp",
-        "projectPath": "C:\\Users\\calan\\Documents\\GitHub\\library\\Library-App\\LibraryApp.csproj",
-        "packagesPath": "C:\\Users\\calan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\calan\\Documents\\GitHub\\library\\Library-App\\obj\\",
+        "projectPath": "Z:\\Swango\\Desktop\\GitHub Repositories\\Library-App\\LibraryApp.csproj",
+        "packagesPath": "C:\\Users\\Swango\\.nuget\\packages\\",
+        "outputPath": "Z:\\Swango\\Desktop\\GitHub Repositories\\Library-App\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\calan\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Swango\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

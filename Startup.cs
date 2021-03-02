@@ -29,7 +29,6 @@ namespace LibraryApp
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
             services.AddDbContext<LibraryDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Connection")));
         }
 

@@ -3,8 +3,11 @@
 @inject NavigationManager nav
 <h2>Book Creation Form</h2>
 
+<!-- Form to create new book (does not check for pre-existing book atm) -->
+<EditForm Model=@newBook OnValidSubmit="@FormSubmitted">
+	<DataAnnotationsValidator/>
+	<ValidationSummary/>
 
-<EditForm Model=@newBook OnSubmit="@FormSubmitted">
 	<div class="form-group row">
 		<label for="Title">Book Title </label>
 		<div class="col-sm-10">
@@ -41,7 +44,7 @@
 	void FormSubmitted() {
 
 		// Makes a connection to the database and adds a new book, saves changes
-		//connection.Books.Add(newBook);
+		// Optional usage instead of States -> connection.Books.Add(newBook);
 		connection.Entry(newBook).State = Microsoft.EntityFrameworkCore.EntityState.Added;
 		connection.SaveChanges();
 

@@ -4,21 +4,46 @@
 
 <input type="text" class="form-control" @oninput="search">
 
-@foreach (var book in bookResult)
-{
-	<h1>@book.Title</h1>
-}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">ISBN</th>
+            <th scope="col">Number of Copies</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var book in bookResult)
+        {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.Author</td>
+                <td>@book.ISBN</td>
+                <td>@book.NumCopies</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
 
 
 @code
 {
-	List<Book> bookResult = new List<Book>();
+    List<Book> bookResult = new List<Book>();
 
-	void search(ChangeEventArgs s) {
-		bookResult = connection.Books.Where(b => b.Title.Contains(s.Value.ToString())).ToList();
+    // On webpage load
+    protected override async Task OnInitializedAsync()
+    {
+        bookResult = connection.Books.ToList();
+    }
 
-		StateHasChanged();
-	}
+    // When something is typed into the search box
+    void search(ChangeEventArgs s) {
+        bookResult = connection.Books.Where(b => b.Title.Contains(s.Value.ToString())).ToList();
 
+        StateHasChanged();
+    }
 
 }

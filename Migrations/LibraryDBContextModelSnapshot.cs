@@ -29,7 +29,7 @@ namespace LibraryApp.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ISBN")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(17)");
 
                     b.Property<int>("NumCopies")
                         .HasColumnType("int");

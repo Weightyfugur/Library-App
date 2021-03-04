@@ -22,5 +22,7 @@ namespace LibraryApp.Data
         [Required]
         [StringLength(17, ErrorMessage = "ISBN too long (17 character limit).")]
         public string ISBN { get; set; }
+
+        public string Status { get; set; }
     }
 }

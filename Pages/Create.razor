@@ -5,35 +5,47 @@
 
 <!-- Form to create new book (does not check for pre-existing book atm) -->
 <EditForm Model=@newBook OnValidSubmit="@FormSubmitted">
-	<DataAnnotationsValidator/>
-	<ValidationSummary/>
+    <DataAnnotationsValidator />
+    <ValidationSummary />
 
-	<div class="form-group row">
-		<label for="Title">Book Title </label>
-		<div class="col-sm-10">
-			<InputText id="Title" @bind-Value="@newBook.Title" />
-		</div>
-	</div>
-	<div class="form-group row">
-		<label for="Author">Book Author </label>
-		<div class="col-sm-10">
-			<InputText id="Author" @bind-Value="@newBook.Author" />
-		</div>
-	</div>
-	<div class="form-group row">
-		<label for="ISBN">Book ISBN </label>
-		<div class="col-sm-10">
-			<InputText id="ISBN" @bind-Value="@newBook.ISBN" />
-		</div>
-	</div>
-	<div class="form-group row">
-		<label for="ISBN">Number of Book Copies </label>
-		<div class="col-sm-10">
-			<InputNumber id="NumCopies" min="1" @bind-Value="@newBook.NumCopies" />
-		</div>
-	</div>
+    <div class="form-group row">
+        <label for="Title">Book Title </label>
+        <div class="col-sm-10">
+            <InputText id="Title" @bind-Value="@newBook.Title" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="Author">Book Author </label>
+        <div class="col-sm-10">
+            <InputText id="Author" @bind-Value="@newBook.Author" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="ISBN">Book ISBN </label>
+        <div class="col-sm-10">
+            <InputText id="ISBN" @bind-Value="@newBook.ISBN" />
+        </div>
+    </div>
 
-	<input type="submit" value="Create Book" class="btn btn-primary" />
+    <div class="form-group row">
+        <label for="Status">Book Status</label>
+        <div class="col-sm-10">
+            <InputSelect @bind-Value="@newBook.Status">
+                <option value="Coming Soon">Coming Soon</option>
+                <option value="Available">Available</option>
+                <option value="Checked Out">Checked Out</option>
+            </InputSelect>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="ISBN">Number of Book Copies </label>
+        <div class="col-sm-10">
+            <InputNumber id="NumCopies" min="1" @bind-Value="@newBook.NumCopies" />
+        </div>
+    </div>
+
+    <input type="submit" value="Create Book" class="btn btn-primary" />
 </EditForm>
 
 

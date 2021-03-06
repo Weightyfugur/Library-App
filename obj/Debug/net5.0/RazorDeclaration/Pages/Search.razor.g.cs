@@ -98,9 +98,13 @@ using LibraryApp.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 35 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Pages\Search.razor"
+#line 51 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Pages\Search.razor"
  
+    List<string> columnNames = new List<string> { "Title", "Author", "ISBN", "Number of Copies", "Status" };
+    List<string> BookSearch = new List<string> { "Title", "Author", "ISBN", "Status" };
     List<Book> bookResult = new List<Book>();
+    BookSort userSort = new BookSort();
+
 
     // On webpage load
     protected override async Task OnInitializedAsync()
@@ -108,11 +112,108 @@ using LibraryApp.Data;
         bookResult = connection.Books.ToList();
     }
 
-    // When something is typed into the search box
-    void search(ChangeEventArgs s) {
-        bookResult = connection.Books.Where(b => b.Title.Contains(s.Value.ToString())).ToList();
+    // When something is typed into the search box update the search class
+    void changeSearch(ChangeEventArgs s)
+    {
+        userSort.searchField = s.Value.ToString();
+        search();
+    }
 
+    // When radio button changes, update the search class
+    void changeFilter(string s)
+    {
+        userSort.filterField = s;
+        search();
+    }
+
+    // When sort changes, update the search class
+    void changeSort(string s)
+    {
+        // reset all column names
+        columnNames[0] = "Title";
+        columnNames[1] = "Author";
+        columnNames[2] = "ISBN";
+        columnNames[3] = "Number of Copies";
+        columnNames[4] = "Status";
+        columnNames[columnNames.IndexOf(s)] = s + " ↓";
+
+        userSort.sortField = s;
+        search();
+    }
+
+    // search function
+    void search()
+    {
+        var tempBookResult = from b in connection.Books
+                             select b;
+
+        // get the results that only contain X in the field X
+        switch (userSort.filterField)
+        {
+            case "Title":
+                tempBookResult = tempBookResult.Where(b => b.Title.Contains(userSort.searchField));
+                break;
+
+            case "Author":
+                tempBookResult = tempBookResult.Where(b => b.Author.Contains(userSort.searchField));
+                break;
+
+            case "ISBN":
+                tempBookResult = tempBookResult.Where(b => b.ISBN.Contains(userSort.searchField));
+                break;
+
+            case "Status":
+                tempBookResult = tempBookResult.Where(b => b.Status.Contains(userSort.searchField));
+                break;
+
+            default:
+                break;
+        }
+
+        // if search field empty, 
+        if (userSort.searchField == "" || userSort.searchField == null)
+        {
+            tempBookResult = from b in connection.Books
+                             select b;
+        }
+
+        // sort results based on the field selected
+        switch (userSort.sortField)
+        {
+            case "Title":
+                tempBookResult = tempBookResult.OrderBy(b => b.Title);
+                break;
+
+            case "Author":
+                tempBookResult = tempBookResult.OrderBy(b => b.Author);
+                break;
+
+            case "ISBN":
+                tempBookResult = tempBookResult.OrderBy(b => b.ISBN);
+                break;
+
+            case "Number of Copies":
+                tempBookResult = tempBookResult.OrderBy(b => b.NumCopies);
+                break;
+
+            case "Status":
+                tempBookResult = tempBookResult.OrderBy(b => b.Status);
+                break;
+
+            default:
+                break;
+        }
+
+
+        bookResult = tempBookResult.ToList();
         StateHasChanged();
+    }
+
+    class BookSort
+    {
+        public string filterField = "Title";
+        public string searchField;
+        public string sortField = "Title";
     }
 
 

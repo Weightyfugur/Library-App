@@ -100,19 +100,19 @@ using LibraryApp.Data;
 #nullable restore
 #line 52 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Pages\Create.razor"
        
-	public Book newBook = new Book();
-	string Status;
+    public Book newBook = new Book();
+    string Status;
 
-	void FormSubmitted() {
+    void FormSubmitted() {
 
-		// Makes a connection to the database and adds a new book, saves changes
-		// Optional usage instead of States -> connection.Books.Add(newBook);
-		connection.Entry(newBook).State = Microsoft.EntityFrameworkCore.EntityState.Added;
-		connection.SaveChanges();
+        // Makes a connection to the database and adds a new book, saves changes
+        // Optional usage instead of States -> connection.Books.Add(newBook);
+        connection.Entry(newBook).State = Microsoft.EntityFrameworkCore.EntityState.Added;
+        connection.SaveChanges();
 
-		nav.NavigateTo(nav.Uri, forceLoad:true);
-		
-	}
+        nav.NavigateTo(nav.Uri, forceLoad:true);
+
+    }
 
 #line default
 #line hidden

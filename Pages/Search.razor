@@ -2,6 +2,8 @@
 @inject LibraryDBContext connection
 
 
+<h4 style="text-align:center">Looking for a specific book? Use the search!</h4><br/>
+
 <input type="text" class="form-control" @oninput="changeSearch">
 <EditForm Model="userSort">
     <InputRadioGroup @bind-Value="@userSort.filterField">

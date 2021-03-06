@@ -98,7 +98,7 @@ using LibraryApp.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 51 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Pages\Search.razor"
+#line 53 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Pages\Search.razor"
  
     List<string> columnNames = new List<string> { "Title", "Author", "ISBN", "Number of Copies", "Status" };
     List<string> BookSearch = new List<string> { "Title", "Author", "ISBN", "Status" };

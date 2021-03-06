@@ -98,7 +98,7 @@ using LibraryApp.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 52 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Pages\Create.razor"
+#line 76 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Pages\Create.razor"
        
     public Book newBook = new Book();
     string Status;

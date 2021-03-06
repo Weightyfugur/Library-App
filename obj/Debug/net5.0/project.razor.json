@@ -45,6 +45,105 @@
         }
       },
       {
+        "HashCode": 1524438368,
+        "Kind": "Components.Component",
+        "Name": "LibraryApp.Pages.Login",
+        "AssemblyName": "LibraryApp",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Login"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "LibraryApp.Pages.Login"
+        }
+      },
+      {
+        "HashCode": 1872334589,
+        "Kind": "Components.Component",
+        "Name": "LibraryApp.Pages.Login",
+        "AssemblyName": "LibraryApp",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "LibraryApp.Pages.Login"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "LibraryApp.Pages.Login",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -221976844,
+        "Kind": "Components.Component",
+        "Name": "LibraryApp.Pages.Edit",
+        "AssemblyName": "LibraryApp",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Edit"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "LibraryApp.Pages.Edit"
+        }
+      },
+      {
+        "HashCode": 1206885041,
+        "Kind": "Components.Component",
+        "Name": "LibraryApp.Pages.Edit",
+        "AssemblyName": "LibraryApp",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "LibraryApp.Pages.Edit"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "LibraryApp.Pages.Edit",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 1790418103,
+        "Kind": "Components.Component",
+        "Name": "LibraryApp.Pages.Create",
+        "AssemblyName": "LibraryApp",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Create"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "LibraryApp.Pages.Create"
+        }
+      },
+      {
+        "HashCode": 732536578,
+        "Kind": "Components.Component",
+        "Name": "LibraryApp.Pages.Create",
+        "AssemblyName": "LibraryApp",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "LibraryApp.Pages.Create"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "LibraryApp.Pages.Create",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": 819146801,
         "Kind": "Components.Component",
         "Name": "LibraryApp.Pages.Search",
@@ -78,68 +177,35 @@
         }
       },
       {
-        "HashCode": 954882047,
+        "HashCode": -1602869781,
         "Kind": "Components.Component",
-        "Name": "LibraryApp.Pages.Counter",
+        "Name": "LibraryApp.App",
         "AssemblyName": "LibraryApp",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "Counter"
+            "TagName": "App"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "LibraryApp.Pages.Counter"
+          "Common.TypeName": "LibraryApp.App"
         }
       },
       {
-        "HashCode": 1640727344,
+        "HashCode": 12187990,
         "Kind": "Components.Component",
-        "Name": "LibraryApp.Pages.Counter",
+        "Name": "LibraryApp.App",
         "AssemblyName": "LibraryApp",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "LibraryApp.Pages.Counter"
+            "TagName": "LibraryApp.App"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "LibraryApp.Pages.Counter",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -888783863,
-        "Kind": "Components.Component",
-        "Name": "LibraryApp.Pages.FetchData",
-        "AssemblyName": "LibraryApp",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "FetchData"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "LibraryApp.Pages.FetchData"
-        }
-      },
-      {
-        "HashCode": 1541687118,
-        "Kind": "Components.Component",
-        "Name": "LibraryApp.Pages.FetchData",
-        "AssemblyName": "LibraryApp",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "LibraryApp.Pages.FetchData"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "LibraryApp.Pages.FetchData",
+          "Common.TypeName": "LibraryApp.App",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -322,39 +388,6 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "LibraryApp.Shared.NavMenu",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -1602869781,
-        "Kind": "Components.Component",
-        "Name": "LibraryApp.App",
-        "AssemblyName": "LibraryApp",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "App"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "LibraryApp.App"
-        }
-      },
-      {
-        "HashCode": 12187990,
-        "Kind": "Components.Component",
-        "Name": "LibraryApp.App",
-        "AssemblyName": "LibraryApp",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "LibraryApp.App"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "LibraryApp.App",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -15965,14 +15998,14 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\calan\\Documents\\GitHub\\library\\Library-App\\Pages\\Edit.razor",
+      "TargetPath": "Pages\\Edit.razor",
+      "FileKind": "component"
+    },
+    {
       "FilePath": "c:\\Users\\calan\\Documents\\GitHub\\library\\Library-App\\Pages\\Error.cshtml",
       "TargetPath": "Pages\\Error.cshtml",
       "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\calan\\Documents\\GitHub\\library\\Library-App\\Pages\\Counter.razor",
-      "TargetPath": "Pages\\Counter.razor",
-      "FileKind": "component"
     },
     {
       "FilePath": "c:\\Users\\calan\\Documents\\GitHub\\library\\Library-App\\_Imports.razor",
@@ -15980,13 +16013,18 @@
       "FileKind": "componentImport"
     },
     {
+      "FilePath": "c:\\Users\\calan\\Documents\\GitHub\\library\\Library-App\\Pages\\Login.razor",
+      "TargetPath": "Pages\\Login.razor",
+      "FileKind": "component"
+    },
+    {
       "FilePath": "c:\\Users\\calan\\Documents\\GitHub\\library\\Library-App\\Pages\\Index.razor",
       "TargetPath": "Pages\\Index.razor",
       "FileKind": "component"
     },
     {
-      "FilePath": "c:\\Users\\calan\\Documents\\GitHub\\library\\Library-App\\Pages\\FetchData.razor",
-      "TargetPath": "Pages\\FetchData.razor",
+      "FilePath": "c:\\Users\\calan\\Documents\\GitHub\\library\\Library-App\\Pages\\Create.razor",
+      "TargetPath": "Pages\\Create.razor",
       "FileKind": "component"
     },
     {

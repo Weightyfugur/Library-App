@@ -1,10 +1,26 @@
 ﻿@page "/Book/Create"
 
-<div style="text-align: center;">
-	<h2>Book Addition/Deletion Form</h2>
-	<p>Enter the book's name:</p>
-	<input type="search" @bind-value="@bookName" class="btn btn-default"><br />
-	<button class="btn btn-primary">Add/Delete</button>
+<style>
+	.container{display: grid; grid-template-columns: 35% 30% 35%;}
+	.segment{text-align: center;}
+	.advertisement1 {text-align: left;}
+	.advertisement2 {text-align: right;}
+</style>
+
+<div class = "container">
+	<div class = "advertisement1">
+		Advertisement, add in picture?
+	</div>
+	<div class = "segment">
+		<h3>Book Addition/Deletion Form</h3>
+		<p>_________________________________________</p>
+		<p>Enter the book's name in the search box below:</p>
+		<input style="background:green" type="search" @bind-value="@bookName" class="btn btn-default"><br />
+		<button class="btn btn-primary">Add/Delete</button>
+	</div>
+	<div class = "advertisement2">
+		Advertisement, add in picture?
+	</div>
 </div>
 
 

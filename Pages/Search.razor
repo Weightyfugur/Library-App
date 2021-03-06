@@ -1,8 +1,26 @@
 @page "/search"
 
-<div style = "text-align: center;">
-    <p>Looking for a specific book? Use the search!</p>
-
-    <input type="search" value="Search" class="btn btn-default"><br/> 
-    <button type="submit" value="Submit Search" class="btn btn-primary">Click to Search</button> 
+<style>
+	.container{display: grid; grid-template-columns: 35% 30% 35%;}
+	.segment{text-align: center;}
+	.advertisement1 {text-align: left;}
+	.advertisement2 {text-align: right;}
+</style>
+<div class = "container">
+    <div class = "advertisement1">
+		Advertisement, add in picture?
+	</div>
+    <div class = "segment">
+        <h4>Looking for a specific book? Use the search!</h4>
+        <br>
+        <input style="background:green" type="search" @bind-value="@bookName" class="btn btn-default"><br /> 
+        <button type="submit" value="Submit Search" class="btn btn-primary">Click to Search</button> 
+    </div>
+    <div class = "advertisement2">
+		Advertisement, add in picture?
+	</div>
 </div>
+
+@code {
+	private string bookName = "Enter Book Name Here";
+}

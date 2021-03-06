@@ -332,3 +332,7 @@ C:\Users\micha\Documents\GitHub\Library-App\obj\Debug\net5.0\LibraryApp.dll
 C:\Users\micha\Documents\GitHub\Library-App\obj\Debug\net5.0\ref\LibraryApp.dll
 C:\Users\micha\Documents\GitHub\Library-App\obj\Debug\net5.0\LibraryApp.pdb
 C:\Users\micha\Documents\GitHub\Library-App\obj\Debug\net5.0\LibraryApp.genruntimeconfig.cache
+Z:\Swango\Desktop\GitHub Repositories\Library-App\obj\Debug\net5.0\RazorDeclaration\Pages\Delete.razor.g.cs
+Z:\Swango\Desktop\GitHub Repositories\Library-App\obj\Debug\net5.0\Razor\Pages\Delete.razor.g.cs
+Z:\Swango\Desktop\GitHub Repositories\Library-App\obj\Debug\net5.0\RazorDeclaration\Pages\BookItem.razor.g.cs
+Z:\Swango\Desktop\GitHub Repositories\Library-App\obj\Debug\net5.0\Razor\Pages\BookItem.razor.g.cs

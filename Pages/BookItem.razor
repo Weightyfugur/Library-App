@@ -1,0 +1,25 @@
+﻿@inject LibraryDBContext connection
+
+<td>@book.Title</td>
+<td>@book.Author</td>
+<td>@book.ISBN</td>
+<td>@book.NumCopies</td>
+<td>@book.Status</td>
+<td><button class="btn btn-danger" type="button" @onclick="deleteBook">DELETE</button></td>
+
+
+@code {
+    [Parameter]
+    public Book book { get; set; }
+
+    [Parameter]
+    public Action paraMethod { get; set; }
+
+    void deleteBook()
+    {
+        connection.Entry(book).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
+        connection.SaveChanges();
+        paraMethod?.Invoke();
+    }
+    
+}

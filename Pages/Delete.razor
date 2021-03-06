@@ -1,8 +1,8 @@
-﻿@page "/search"
+﻿@page "/book/delete"
 @inject LibraryDBContext connection
 
-
-<h3 style="text-align:center">Looking for a specific book? Use the search!</h3><br/>
+<h3 style="text-align:center">Delete Book</h3>
+<br />
 
 <input type="text" class="form-control" @oninput="changeSearch">
 <EditForm Model="userSort">
@@ -11,10 +11,10 @@
             <tr>
                 @foreach (var bookSort in BookSearch)
                 {
-                <td>
-                    <InputRadio Value="bookSort" @onclick="@(e => changeFilter(bookSort))"/>
-                    @bookSort
-                </td>
+                    <td>
+                        <InputRadio Value="bookSort" @onclick="@(e => changeFilter(bookSort))" />
+                        @bookSort
+                    </td>
                 }
             </tr>
         </table>
@@ -30,6 +30,7 @@
             <th scope="col" @onclick="@(e => changeSort("ISBN"))">@columnNames[2]</th>
             <th scope="col" @onclick="@(e => changeSort("Number of Copies"))">@columnNames[3]</th>
             <th scope="col" @onclick="@(e => changeSort("Status"))">@columnNames[4]</th>
+            <th scope="col"></th>
         </tr>
     </thead>
 
@@ -37,11 +38,7 @@
         @foreach (var book in bookResult)
         {
             <tr>
-                <td>@book.Title</td>
-                <td>@book.Author</td>
-                <td>@book.ISBN</td>
-                <td>@book.NumCopies</td>
-                <td>@book.Status</td>
+               <BookItem book="book" paraMethod="@search"/>
             </tr>
         }
     </tbody>
@@ -121,7 +118,7 @@
                 break;
         }
 
-        // if search field empty, 
+        // if search field empty,
         if (userSort.searchField == "" || userSort.searchField == null)
         {
             tempBookResult = from b in connection.Books

@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace LibraryApp.Shared
+namespace LibraryApp.Pages
 {
     #line hidden
     using System;
@@ -89,7 +89,7 @@ using LibraryApp.Data;
 #line default
 #line hidden
 #nullable disable
-    public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class BookItem : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -97,20 +97,26 @@ using LibraryApp.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 38 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Shared\NavMenu.razor"
+#line 11 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Pages\BookItem.razor"
        
-    private bool collapseNavMenu = true;
+    [Parameter]
+    public Book book { get; set; }
 
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    [Parameter]
+    public Action paraMethod { get; set; }
 
-    private void ToggleNavMenu()
+    void deleteBook()
     {
-        collapseNavMenu = !collapseNavMenu;
+        connection.Entry(book).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
+        connection.SaveChanges();
+        paraMethod?.Invoke();
     }
+    
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private LibraryDBContext connection { get; set; }
     }
 }
 #pragma warning restore 1591

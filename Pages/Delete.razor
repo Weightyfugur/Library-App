@@ -38,12 +38,18 @@
         @foreach (var book in bookResult)
         {
             <tr>
-               <BookItem book="book" paraMethod="@search"/>
+                <td>@book.Title</td>
+                <td>@book.Author</td>
+                <td>@book.ISBN</td>
+                <td>@book.NumCopies</td>
+                <td>@book.Status</td>
+                <td><button class="btn btn-danger" type="button" @onclick="@(e => deleteBook(@book))">DELETE</button></td>
             </tr>
         }
     </tbody>
 </table>
 
+<DeleteBookDisplay @ref="deleteModal" CloseEventCallback="@search" />
 
 
 @code
@@ -53,6 +59,7 @@
     List<Book> bookResult = new List<Book>();
     BookSort userSort = new BookSort();
 
+    public DeleteBookDisplay deleteModal { get; set; }
 
     // On webpage load
     protected override async Task OnInitializedAsync()
@@ -164,4 +171,9 @@
         public string sortField = "Title";
     }
 
+    void deleteBook(Book book)
+    {
+        deleteModal.setBook(book);
+        deleteModal.Show();
+    }
 }

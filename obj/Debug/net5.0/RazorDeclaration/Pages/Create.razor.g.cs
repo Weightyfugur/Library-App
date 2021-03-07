@@ -89,6 +89,13 @@ using LibraryApp.Data;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 12 "Z:\Swango\Desktop\GitHub Repositories\Library-App\_Imports.razor"
+using LibraryApp.Components;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/book/create")]
     public partial class Create : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -98,12 +105,13 @@ using LibraryApp.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 76 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Pages\Create.razor"
+#line 83 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Pages\Create.razor"
        
     public Book newBook = new Book();
-    string Status;
+    public int ISBN;
 
     void FormSubmitted() {
+        newBook.ISBN = ISBN.ToString();
 
         // Makes a connection to the database and adds a new book, saves changes
         // Optional usage instead of States -> connection.Books.Add(newBook);

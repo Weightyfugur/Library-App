@@ -89,6 +89,13 @@ using LibraryApp.Data;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 12 "Z:\Swango\Desktop\GitHub Repositories\Library-App\_Imports.razor"
+using LibraryApp.Components;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/book/delete")]
     public partial class Delete : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -98,13 +105,14 @@ using LibraryApp.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 50 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Pages\Delete.razor"
+#line 56 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Pages\Delete.razor"
  
     List<string> columnNames = new List<string> { "Title", "Author", "ISBN", "Number of Copies", "Status" };
     List<string> BookSearch = new List<string> { "Title", "Author", "ISBN", "Status" };
     List<Book> bookResult = new List<Book>();
     BookSort userSort = new BookSort();
 
+    public DeleteBookDisplay deleteModal { get; set; }
 
     // On webpage load
     protected override async Task OnInitializedAsync()
@@ -216,6 +224,11 @@ using LibraryApp.Data;
         public string sortField = "Title";
     }
 
+    void deleteBook(Book book)
+    {
+        deleteModal.setBook(book);
+        deleteModal.Show();
+    }
 
 #line default
 #line hidden

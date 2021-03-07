@@ -37,19 +37,19 @@
     <tbody>
         @foreach (var book in bookResult)
         {
-            <tr>
-                <td>@book.Title</td>
-                <td>@book.Author</td>
-                <td>@book.ISBN</td>
-                <td>@book.NumCopies</td>
-                <td>@book.Status</td>
-                <td><input class="btn btn-secondary" type="button" value="EDIT"/></td>
-            </tr>
+        <tr>
+            <td>@book.Title</td>
+            <td>@book.Author</td>
+            <td>@book.ISBN</td>
+            <td>@book.NumCopies</td>
+            <td>@book.Status</td>
+            <td><button class="btn btn-secondary" type="button" @onclick="@(e => editBook(@book))">EDIT</button></td>
+        </tr>
         }
     </tbody>
 </table>
 
-
+<EditBookDisplay @ref="editModal" CloseEventCallback="@search" />
 
 @code
 {
@@ -58,6 +58,7 @@
     List<Book> bookResult = new List<Book>();
     BookSort userSort = new BookSort();
 
+    public EditBookDisplay editModal { get; set; }
 
     // On webpage load
     protected override async Task OnInitializedAsync()
@@ -167,6 +168,12 @@
         public string filterField = "Title";
         public string searchField;
         public string sortField = "Title";
+    }
+
+    void editBook(Book book)
+    {
+        editModal.setBook(book);
+        editModal.Show();
     }
 
 }

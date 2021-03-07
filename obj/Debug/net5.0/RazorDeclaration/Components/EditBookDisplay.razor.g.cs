@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace LibraryApp.Pages
+namespace LibraryApp.Components
 {
     #line hidden
     using System;
@@ -89,7 +89,14 @@ using LibraryApp.Data;
 #line default
 #line hidden
 #nullable disable
-    public partial class BookItem : Microsoft.AspNetCore.Components.ComponentBase
+#nullable restore
+#line 12 "Z:\Swango\Desktop\GitHub Repositories\Library-App\_Imports.razor"
+using LibraryApp.Components;
+
+#line default
+#line hidden
+#nullable disable
+    public partial class EditBookDisplay : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -97,21 +104,48 @@ using LibraryApp.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 11 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Pages\BookItem.razor"
+#line 60 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Components\EditBookDisplay.razor"
        
-    [Parameter]
-    public Book book { get; set; }
+    public Book book {get; set;}
+
+    public bool ShowDialog {get; set;}
 
     [Parameter]
-    public Action paraMethod { get; set; }
+    public Action CloseEventCallback {get; set;}
 
-    void deleteBook()
+    public void Show()
     {
-        connection.Entry(book).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
-        connection.SaveChanges();
-        paraMethod?.Invoke();
+        ShowDialog = true;
+        StateHasChanged();
     }
-    
+
+    public void Close()
+    {
+        ShowDialog = false;
+        StateHasChanged();
+    }
+
+    // Submit button
+    void HandleValidSubmit()
+    {
+        editBook();
+        ShowDialog = false;
+        CloseEventCallback.Invoke();
+        StateHasChanged();
+    }
+
+    // changes the data for the book
+    void editBook()
+    {
+        connection.Entry(book).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+        connection.SaveChanges();
+    }
+
+    public void setBook(Book _book)
+    {
+        book = _book;
+        StateHasChanged();
+    }
 
 #line default
 #line hidden

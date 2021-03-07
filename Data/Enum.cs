@@ -1,0 +1,1 @@
+﻿public enum bookButtonState {edit, delete }

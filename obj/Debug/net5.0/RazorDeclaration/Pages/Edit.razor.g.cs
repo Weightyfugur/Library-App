@@ -89,6 +89,13 @@ using LibraryApp.Data;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 12 "Z:\Swango\Desktop\GitHub Repositories\Library-App\_Imports.razor"
+using LibraryApp.Components;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/book/edit")]
     public partial class Edit : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -105,6 +112,7 @@ using LibraryApp.Data;
     List<Book> bookResult = new List<Book>();
     BookSort userSort = new BookSort();
 
+    public EditBookDisplay editModal { get; set; }
 
     // On webpage load
     protected override async Task OnInitializedAsync()
@@ -214,6 +222,12 @@ using LibraryApp.Data;
         public string filterField = "Title";
         public string searchField;
         public string sortField = "Title";
+    }
+
+    void editBook(Book book)
+    {
+        editModal.setBook(book);
+        editModal.Show();
     }
 
 

@@ -20,7 +20,7 @@ namespace LibraryApp.Data
         public int NumCopies { get; set; } = 1;
 
         [Required]
-        [StringLength(17, ErrorMessage = "ISBN too long (17 character limit).")]
+        [StringLength(13, ErrorMessage = "ISBN too long (13 character limit).")]
         public string ISBN { get; set; }
 
         public string Status { get; set; } = "Coming Soon";

@@ -96,7 +96,7 @@ using LibraryApp.Components;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/book/edit")]
+    [Microsoft.AspNetCore.Components.RouteAttribute("/book/manage")]
     public partial class Edit : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -105,13 +105,14 @@ using LibraryApp.Components;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 55 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Pages\Edit.razor"
+#line 59 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Pages\Edit.razor"
  
     List<string> columnNames = new List<string> { "Title", "Author", "ISBN", "Number of Copies", "Status" };
     List<Book> bookResult = new List<Book>();
     BookSort userSort = new BookSort();
 
     public EditBookDisplay editModal { get; set; }
+    public DeleteBookDisplay deleteModal { get; set; }
 
     // On webpage load
     protected override async Task OnInitializedAsync()
@@ -229,6 +230,11 @@ using LibraryApp.Components;
         editModal.Show();
     }
 
+    void deleteBook(Book book)
+    {
+        deleteModal.setBook(book);
+        deleteModal.Show();
+    }
 
 #line default
 #line hidden

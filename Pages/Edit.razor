@@ -1,7 +1,7 @@
 ﻿@page "/book/edit"
 @inject LibraryDBContext connection
 
-<h3 style="text-align:center">Edit Book Information</h3>
+<h3 style="text-align:center">Edit Book</h3>
 <br />
 
 <input type="text" class="form-control" @oninput="changeSearch">
@@ -9,7 +9,7 @@
     <InputRadioGroup @bind-Value="@userSort.filterField">
         <table class="table">
             <tr>
-                @foreach (var bookSort in BookSearch)
+                @foreach (var bookSort in Enum.GetValues(typeof(BookSearch)))
                 {
                     <td>
                         <InputRadio Value="bookSort" @onclick="@(e => changeFilter(bookSort))" />
@@ -54,7 +54,6 @@
 @code
 {
     List<string> columnNames = new List<string> { "Title", "Author", "ISBN", "Number of Copies", "Status" };
-    List<string> BookSearch = new List<string> { "Title", "Author", "ISBN", "Status" };
     List<Book> bookResult = new List<Book>();
     BookSort userSort = new BookSort();
 
@@ -63,7 +62,7 @@
     // On webpage load
     protected override async Task OnInitializedAsync()
     {
-        bookResult = connection.Books.ToList();
+        search();
     }
 
     // When something is typed into the search box update the search class
@@ -74,9 +73,9 @@
     }
 
     // When radio button changes, update the search class
-    void changeFilter(string s)
+    void changeFilter(object s)
     {
-        userSort.filterField = s;
+        userSort.filterField = (BookSearch)(int)s;
         search();
     }
 
@@ -104,19 +103,19 @@
         // get the results that only contain X in the field X
         switch (userSort.filterField)
         {
-            case "Title":
+            case BookSearch.Title:
                 tempBookResult = tempBookResult.Where(b => b.Title.Contains(userSort.searchField));
                 break;
 
-            case "Author":
+            case BookSearch.Author:
                 tempBookResult = tempBookResult.Where(b => b.Author.Contains(userSort.searchField));
                 break;
 
-            case "ISBN":
+            case BookSearch.ISBN:
                 tempBookResult = tempBookResult.Where(b => b.ISBN.Contains(userSort.searchField));
                 break;
 
-            case "Status":
+            case BookSearch.Status:
                 tempBookResult = tempBookResult.Where(b => b.Status.Contains(userSort.searchField));
                 break;
 
@@ -165,7 +164,7 @@
 
     class BookSort
     {
-        public string filterField = "Title";
+        public BookSearch filterField = BookSearch.Title;
         public string searchField;
         public string sortField = "Title";
     }

@@ -108,7 +108,6 @@ using LibraryApp.Components;
 #line 56 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Pages\Delete.razor"
  
     List<string> columnNames = new List<string> { "Title", "Author", "ISBN", "Number of Copies", "Status" };
-    List<string> BookSearch = new List<string> { "Title", "Author", "ISBN", "Status" };
     List<Book> bookResult = new List<Book>();
     BookSort userSort = new BookSort();
 
@@ -117,7 +116,7 @@ using LibraryApp.Components;
     // On webpage load
     protected override async Task OnInitializedAsync()
     {
-        bookResult = connection.Books.ToList();
+        search();
     }
 
     // When something is typed into the search box update the search class
@@ -128,9 +127,9 @@ using LibraryApp.Components;
     }
 
     // When radio button changes, update the search class
-    void changeFilter(string s)
+    void changeFilter(object s)
     {
-        userSort.filterField = s;
+        userSort.filterField = (BookSearch)(int)s;
         search();
     }
 
@@ -158,19 +157,19 @@ using LibraryApp.Components;
         // get the results that only contain X in the field X
         switch (userSort.filterField)
         {
-            case "Title":
+            case BookSearch.Title:
                 tempBookResult = tempBookResult.Where(b => b.Title.Contains(userSort.searchField));
                 break;
 
-            case "Author":
+            case BookSearch.Author:
                 tempBookResult = tempBookResult.Where(b => b.Author.Contains(userSort.searchField));
                 break;
 
-            case "ISBN":
+            case BookSearch.ISBN:
                 tempBookResult = tempBookResult.Where(b => b.ISBN.Contains(userSort.searchField));
                 break;
 
-            case "Status":
+            case BookSearch.Status:
                 tempBookResult = tempBookResult.Where(b => b.Status.Contains(userSort.searchField));
                 break;
 
@@ -219,7 +218,7 @@ using LibraryApp.Components;
 
     class BookSort
     {
-        public string filterField = "Title";
+        public BookSearch filterField = BookSearch.Title;
         public string searchField;
         public string sortField = "Title";
     }

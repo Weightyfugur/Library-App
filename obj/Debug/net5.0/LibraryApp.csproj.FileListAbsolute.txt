@@ -338,3 +338,5 @@ Z:\Swango\Desktop\GitHub Repositories\Library-App\obj\Debug\net5.0\RazorDeclarat
 Z:\Swango\Desktop\GitHub Repositories\Library-App\obj\Debug\net5.0\Razor\Components\EditBookDisplay.razor.g.cs
 Z:\Swango\Desktop\GitHub Repositories\Library-App\obj\Debug\net5.0\RazorDeclaration\Components\DeleteBookDisplay.razor.g.cs
 Z:\Swango\Desktop\GitHub Repositories\Library-App\obj\Debug\net5.0\Razor\Components\DeleteBookDisplay.razor.g.cs
+Z:\Swango\Desktop\GitHub Repositories\Library-App\obj\Debug\net5.0\RazorDeclaration\Pages\ComingSoon.razor.g.cs
+Z:\Swango\Desktop\GitHub Repositories\Library-App\obj\Debug\net5.0\Razor\Pages\ComingSoon.razor.g.cs

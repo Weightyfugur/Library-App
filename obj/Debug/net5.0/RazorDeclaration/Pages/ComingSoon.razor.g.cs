@@ -96,8 +96,8 @@ using LibraryApp.Components;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/book/edit")]
-    public partial class Edit : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/comingsoon")]
+    public partial class ComingSoon : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -105,18 +105,21 @@ using LibraryApp.Components;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 55 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Pages\Edit.razor"
+#line 54 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Pages\ComingSoon.razor"
  
     List<string> columnNames = new List<string> { "Title", "Author", "ISBN", "Number of Copies", "Status" };
     List<Book> bookResult = new List<Book>();
     BookSort userSort = new BookSort();
 
-    public EditBookDisplay editModal { get; set; }
 
     // On webpage load
     protected override async Task OnInitializedAsync()
     {
-        search();
+
+        var tempBookResult = from b in connection.Books
+                             select b;
+        tempBookResult = tempBookResult.Where(b => b.Status.Contains("Coming Soon"));
+        bookResult = tempBookResult.ToList();
     }
 
     // When something is typed into the search box update the search class
@@ -129,7 +132,7 @@ using LibraryApp.Components;
     // When radio button changes, update the search class
     void changeFilter(object s)
     {
-        userSort.filterField = (BookSearch)(int)s;
+        userSort.filterField = (newBookSearch)(int)s;
         search();
     }
 
@@ -157,20 +160,16 @@ using LibraryApp.Components;
         // get the results that only contain X in the field X
         switch (userSort.filterField)
         {
-            case BookSearch.Title:
+            case newBookSearch.Title:
                 tempBookResult = tempBookResult.Where(b => b.Title.Contains(userSort.searchField));
                 break;
 
-            case BookSearch.Author:
+            case newBookSearch.Author:
                 tempBookResult = tempBookResult.Where(b => b.Author.Contains(userSort.searchField));
                 break;
 
-            case BookSearch.ISBN:
+            case newBookSearch.ISBN:
                 tempBookResult = tempBookResult.Where(b => b.ISBN.Contains(userSort.searchField));
-                break;
-
-            case BookSearch.Status:
-                tempBookResult = tempBookResult.Where(b => b.Status.Contains(userSort.searchField));
                 break;
 
             default:
@@ -203,30 +202,20 @@ using LibraryApp.Components;
                 tempBookResult = tempBookResult.OrderBy(b => b.NumCopies);
                 break;
 
-            case "Status":
-                tempBookResult = tempBookResult.OrderBy(b => b.Status);
-                break;
-
             default:
                 break;
         }
 
-
+        tempBookResult = tempBookResult.Where(b => b.Status.Contains("Coming Soon"));
         bookResult = tempBookResult.ToList();
         StateHasChanged();
     }
 
     class BookSort
     {
-        public BookSearch filterField = BookSearch.Title;
+        public newBookSearch filterField = newBookSearch.Title;
         public string searchField;
         public string sortField = "Title";
-    }
-
-    void editBook(Book book)
-    {
-        editModal.setBook(book);
-        editModal.Show();
     }
 
 

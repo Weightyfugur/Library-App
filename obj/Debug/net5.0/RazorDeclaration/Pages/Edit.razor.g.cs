@@ -105,9 +105,9 @@ using LibraryApp.Components;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 59 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Pages\Edit.razor"
+#line 60 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Pages\Edit.razor"
  
-    List<string> columnNames = new List<string> { "Title", "Author", "ISBN", "Number of Copies", "Status" };
+    List<string> columnNames = new List<string> { "Title", "Author", "ISBN", "Status", "Number of Copies" };
     List<Book> bookResult = new List<Book>();
     BookSort userSort = new BookSort();
 
@@ -141,8 +141,8 @@ using LibraryApp.Components;
         columnNames[0] = "Title";
         columnNames[1] = "Author";
         columnNames[2] = "ISBN";
-        columnNames[3] = "Number of Copies";
-        columnNames[4] = "Status";
+        columnNames[3] = "Status";
+        columnNames[4] = "Number of Copies";
         columnNames[columnNames.IndexOf(s)] = s + " ↓";
 
         userSort.sortField = s;

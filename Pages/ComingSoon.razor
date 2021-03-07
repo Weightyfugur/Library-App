@@ -29,21 +29,21 @@
             <th scope="col" @onclick="@(e => changeSort("Title"))">@columnNames[0]</th>
             <th scope="col" @onclick="@(e => changeSort("Author"))">@columnNames[1]</th>
             <th scope="col" @onclick="@(e => changeSort("ISBN"))">@columnNames[2]</th>
-            <th scope="col" @onclick="@(e => changeSort("Number of Copies"))">@columnNames[3]</th>
-            <th scope="col" @onclick="@(e => changeSort("Status"))">@columnNames[4]</th>
+            <th scope="col" @onclick="@(e => changeSort("Status"))">@columnNames[3]</th>
+            <th scope="col" @onclick="@(e => changeSort("Number of Copies"))">@columnNames[4]</th>
         </tr>
     </thead>
 
     <tbody>
         @foreach (var book in bookResult)
         {
-            <tr>
-                <td>@book.Title</td>
-                <td>@book.Author</td>
-                <td>@book.ISBN</td>
-                <td>@book.NumCopies</td>
-                <td>@book.Status</td>
-            </tr>
+        <tr>
+            <td>@book.Title</td>
+            <td>@book.Author</td>
+            <td>@book.ISBN</td>
+            <td>@book.Status</td>
+            <td>@book.NumCopies</td>
+        </tr>
         }
     </tbody>
 </table>
@@ -52,7 +52,7 @@
 
 @code
 {
-    List<string> columnNames = new List<string> { "Title", "Author", "ISBN", "Number of Copies", "Status" };
+    List<string> columnNames = new List<string> { "Title", "Author", "ISBN", "Status", "Number of Copies" };
     List<Book> bookResult = new List<Book>();
     BookSort userSort = new BookSort();
 
@@ -88,8 +88,8 @@
         columnNames[0] = "Title";
         columnNames[1] = "Author";
         columnNames[2] = "ISBN";
-        columnNames[3] = "Number of Copies";
-        columnNames[4] = "Status";
+        columnNames[3] = "Status";
+        columnNames[4] = "Number of Copies";
         columnNames[columnNames.IndexOf(s)] = s + " ↓";
 
         userSort.sortField = s;

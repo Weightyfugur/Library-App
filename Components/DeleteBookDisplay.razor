@@ -15,8 +15,6 @@
                 </div>
                 <div class="modal-body">
                     <EditForm Model="@book" OnValidSubmit="@HandleValidSubmit">
-                        <DataAnnotationsValidator />
-                        <ValidationSummary />
                         <button type="submit" class="btn btn-danger">Delete Book</button>
                         <a class="btn btn-outline-primary" @onclick="@Close">Close</a>
                     </EditForm>

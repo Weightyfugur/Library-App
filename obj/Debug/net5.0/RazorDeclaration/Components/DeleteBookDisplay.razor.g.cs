@@ -104,7 +104,7 @@ using LibraryApp.Components;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 29 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Components\DeleteBookDisplay.razor"
+#line 27 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Components\DeleteBookDisplay.razor"
        
     public Book book { get; set; }
 

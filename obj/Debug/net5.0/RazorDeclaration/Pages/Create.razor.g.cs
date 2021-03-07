@@ -111,8 +111,6 @@ using LibraryApp.Components;
     public int ISBN;
 
     void FormSubmitted() {
-        newBook.ISBN = ISBN.ToString();
-
         // Makes a connection to the database and adds a new book, saves changes
         // Optional usage instead of States -> connection.Books.Add(newBook);
         connection.Entry(newBook).State = Microsoft.EntityFrameworkCore.EntityState.Added;

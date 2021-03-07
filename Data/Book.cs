@@ -20,7 +20,7 @@ namespace LibraryApp.Data
         public int NumCopies { get; set; } = 1;
 
         [Required]
-        [StringLength(13, ErrorMessage = "ISBN too long (13 character limit).")]
+        [ISBNValidation(ErrorMessage = "ISBN must be 10 or 13 digits in the form: 1234567890 or 123-4567890123")]
         public string ISBN { get; set; }
 
         public string Status { get; set; } = "Coming Soon";

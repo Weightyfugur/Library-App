@@ -108,7 +108,7 @@ using LibraryApp.Components;
 #line 60 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Pages\Edit.razor"
  
     List<string> columnNames = new List<string> { "Title", "Author", "ISBN", "Status", "Number of Copies" };
-    List<Book> bookResult = new List<Book>();
+    List<BookCount> bookResult = new List<BookCount>();
     BookSort userSort = new BookSort();
 
     public EditBookDisplay editModal { get; set; }
@@ -185,35 +185,53 @@ using LibraryApp.Components;
                              select b;
         }
 
+        // get number of books
+
+        var countTable = connection.Books.GroupBy(b => new { Title = b.Title, Author = b.Author, ISBN = b.ISBN, Status = b.Status }).Select(b => new { b.Key, count = b.Count() });
+
+        var result = from b in tempBookResult
+                     join c in countTable on new { b.Title, b.Author, b.ISBN, b.Status } equals c.Key
+                     select new
+                     {
+                         Book = b,
+                         Count = c.count
+                     };
+        var resultTable = result.Select(b => new { Title = b.Book.Title, Author = b.Book.Author, ISBN = b.Book.ISBN, Status = b.Book.Status, Count = b.Count }).Distinct();
+
+
         // sort results based on the field selected
         switch (userSort.sortField)
         {
             case "Title":
-                tempBookResult = tempBookResult.OrderBy(b => b.Title);
+                resultTable = resultTable.OrderBy(b => b.Title);
                 break;
 
             case "Author":
-                tempBookResult = tempBookResult.OrderBy(b => b.Author);
+                resultTable = resultTable.OrderBy(b => b.Author);
                 break;
 
             case "ISBN":
-                tempBookResult = tempBookResult.OrderBy(b => b.ISBN);
+                resultTable = resultTable.OrderBy(b => b.ISBN);
                 break;
 
             case "Number of Copies":
-                tempBookResult = tempBookResult.OrderBy(b => b.NumCopies);
+                resultTable = resultTable.OrderBy(b => b.Count);
                 break;
 
             case "Status":
-                tempBookResult = tempBookResult.OrderBy(b => b.Status);
+                resultTable = resultTable.OrderBy(b => b.Status);
                 break;
 
             default:
                 break;
         }
 
-
-        bookResult = tempBookResult.ToList();
+        var tempList = resultTable.ToList();
+        bookResult.Clear();
+        foreach (var i in tempList)
+        {
+            bookResult.Add(new BookCount(i.Title, i.Author, i.ISBN, i.Status, i.Count));
+        }
         StateHasChanged();
     }
 
@@ -224,13 +242,13 @@ using LibraryApp.Components;
         public string sortField = "Title";
     }
 
-    void editBook(Book book)
+    void editBook(BookCount book)
     {
         editModal.setBook(book);
         editModal.Show();
     }
 
-    void deleteBook(Book book)
+    void deleteBook(BookCount book)
     {
         deleteModal.setBook(book);
         deleteModal.Show();

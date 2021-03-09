@@ -105,7 +105,7 @@ using LibraryApp.Components;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 83 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Pages\Create.razor"
+#line 81 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Pages\Create.razor"
        
     public Book newBook = new Book();
     public int ISBN;

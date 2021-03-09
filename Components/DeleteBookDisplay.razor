@@ -1,4 +1,5 @@
-﻿@inject LibraryDBContext connection
+﻿@using System.ComponentModel.DataAnnotations
+@inject LibraryDBContext connection
 
 
 @if (ShowDialog)
@@ -7,14 +8,15 @@
     <div class="modal fade show d-block" id="exampleModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="titleLabel">Delete Book</h5>
-                    <button type="button" class="close" @onclick="@Close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
                 <div class="modal-body">
-                    <EditForm Model="@book" OnValidSubmit="@HandleValidSubmit">
+                    <EditForm Model="@input" OnValidSubmit="@HandleValidSubmit">
+                        <DataAnnotationsValidator />
+                        <ValidationSummary />
+                        <div class="form-group">
+                            <label for="num">Number of Books: </label>
+                            <InputNumber id="num" class="form-control" @bind-Value="@input.amount"></InputNumber>
+                        </div>
+
                         <button type="submit" class="btn btn-danger">Delete Book</button>
                         <a class="btn btn-outline-primary" @onclick="@Close">Close</a>
                     </EditForm>
@@ -25,12 +27,22 @@
 }
 
 @code {
-    public Book book { get; set; }
-
+    public numInput input = new numInput();
+    public List<Book> bookList;
     public bool ShowDialog { get; set; }
+
 
     [Parameter]
     public Action CloseEventCallback { get; set; }
+
+    public class numInput
+    {
+        [Required]
+        [Range(1, 100, ErrorMessage = "Must have enough books to delete")]
+        public int amount { get; set; }
+
+        public Book bookSearch = new Book();
+    }
 
     public void Show()
     {
@@ -56,14 +68,42 @@
     // deletes the book
     void deleteBook()
     {
-        connection.Entry(book).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
+        setBookList();
+        foreach (var b in bookList)
+        {
+            b.Title = input.bookSearch.Title;
+            b.Author = input.bookSearch.Author;
+            b.ISBN = input.bookSearch.ISBN;
+            b.Status = input.bookSearch.Status;
+            connection.Entry(b).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
+        }
+
         connection.SaveChanges();
     }
 
-    public void setBook(Book _book)
+    public void setBook(BookCount _book)
     {
-        book = _book;
+        input.bookSearch.Title = _book.Title;
+        input.bookSearch.Author = _book.Author;
+        input.bookSearch.ISBN = _book.ISBN;
+        input.bookSearch.Status = _book.Status;
+        setBookList();
         StateHasChanged();
+    }
+
+    private void setBookList()
+    {
+        var result = from b in connection.Books
+                     select b;
+
+        result = result.Where(b => b.Title.Contains(input.bookSearch.Title));
+        result = result.Where(b => b.Author.Contains(input.bookSearch.Author));
+        result = result.Where(b => b.ISBN.Contains(input.bookSearch.ISBN));
+        result = result.Where(b => b.Status.Contains(input.bookSearch.Status));
+
+        result = result.Take(input.amount);
+
+        bookList = result.ToList();
     }
 
 }

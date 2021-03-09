@@ -96,6 +96,13 @@ using LibraryApp.Components;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 1 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Components\DeleteBookDisplay.razor"
+using System.ComponentModel.DataAnnotations;
+
+#line default
+#line hidden
+#nullable disable
     public partial class DeleteBookDisplay : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -104,14 +111,24 @@ using LibraryApp.Components;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 27 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Components\DeleteBookDisplay.razor"
+#line 29 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Components\DeleteBookDisplay.razor"
        
-    public Book book { get; set; }
-
+    public numInput input = new numInput();
+    public List<Book> bookList;
     public bool ShowDialog { get; set; }
+
 
     [Parameter]
     public Action CloseEventCallback { get; set; }
+
+    public class numInput
+    {
+        [Required]
+        [Range(1, 100, ErrorMessage = "Must have enough books to delete")]
+        public int amount { get; set; }
+
+        public Book bookSearch = new Book();
+    }
 
     public void Show()
     {
@@ -137,14 +154,42 @@ using LibraryApp.Components;
     // deletes the book
     void deleteBook()
     {
-        connection.Entry(book).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
+        setBookList();
+        foreach (var b in bookList)
+        {
+            b.Title = input.bookSearch.Title;
+            b.Author = input.bookSearch.Author;
+            b.ISBN = input.bookSearch.ISBN;
+            b.Status = input.bookSearch.Status;
+            connection.Entry(b).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
+        }
+
         connection.SaveChanges();
     }
 
-    public void setBook(Book _book)
+    public void setBook(BookCount _book)
     {
-        book = _book;
+        input.bookSearch.Title = _book.Title;
+        input.bookSearch.Author = _book.Author;
+        input.bookSearch.ISBN = _book.ISBN;
+        input.bookSearch.Status = _book.Status;
+        setBookList();
         StateHasChanged();
+    }
+
+    private void setBookList()
+    {
+        var result = from b in connection.Books
+                     select b;
+
+        result = result.Where(b => b.Title.Contains(input.bookSearch.Title));
+        result = result.Where(b => b.Author.Contains(input.bookSearch.Author));
+        result = result.Where(b => b.ISBN.Contains(input.bookSearch.ISBN));
+        result = result.Where(b => b.Status.Contains(input.bookSearch.Status));
+
+        result = result.Take(input.amount);
+
+        bookList = result.ToList();
     }
 
 

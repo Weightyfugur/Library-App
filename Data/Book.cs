@@ -17,9 +17,6 @@ namespace LibraryApp.Data
         public string Author { get; set; }
 
         [Required]
-        public int NumCopies { get; set; } = 1;
-
-        [Required]
         [ISBNValidation(ErrorMessage = "ISBN must be 10 or 13 digits in the form: 1234567890 or 123-4567890123")]
         public string ISBN { get; set; }
 

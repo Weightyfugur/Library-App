@@ -42,7 +42,7 @@
             <td>@book.Author</td>
             <td>@book.ISBN</td>
             <td>@book.Status</td>
-            <td>@book.NumCopies</td>
+            <td>@book.Count</td>
         </tr>
         }
     </tbody>
@@ -53,18 +53,14 @@
 @code
 {
     List<string> columnNames = new List<string> { "Title", "Author", "ISBN", "Status", "Number of Copies" };
-    List<Book> bookResult = new List<Book>();
+    List<BookCount> bookResult = new List<BookCount>();
     BookSort userSort = new BookSort();
 
 
     // On webpage load
     protected override async Task OnInitializedAsync()
     {
-
-        var tempBookResult = from b in connection.Books
-                             select b;
-        tempBookResult = tempBookResult.Where(b => b.Status.Contains("Coming Soon"));
-        bookResult = tempBookResult.ToList();
+        search();
     }
 
     // When something is typed into the search box update the search class
@@ -128,31 +124,54 @@
                              select b;
         }
 
+        // get number of books
+
+        var countTable = connection.Books.GroupBy(b => new { Title = b.Title, Author = b.Author, ISBN = b.ISBN, Status = b.Status }).Select(b => new { b.Key, count = b.Count() });
+
+        var result = from b in tempBookResult
+                     join c in countTable on new { b.Title, b.Author, b.ISBN, b.Status } equals c.Key
+                     select new
+                     {
+                         Book = b,
+                         Count = c.count
+                     };
+        var resultTable = result.Select(b => new { Title = b.Book.Title, Author = b.Book.Author, ISBN = b.Book.ISBN, Status = b.Book.Status, Count = b.Count }).Distinct();
+
         // sort results based on the field selected
         switch (userSort.sortField)
         {
             case "Title":
-                tempBookResult = tempBookResult.OrderBy(b => b.Title);
+                resultTable = resultTable.OrderBy(b => b.Title);
                 break;
 
             case "Author":
-                tempBookResult = tempBookResult.OrderBy(b => b.Author);
+                resultTable = resultTable.OrderBy(b => b.Author);
                 break;
 
             case "ISBN":
-                tempBookResult = tempBookResult.OrderBy(b => b.ISBN);
+                resultTable = resultTable.OrderBy(b => b.ISBN);
                 break;
 
             case "Number of Copies":
-                tempBookResult = tempBookResult.OrderBy(b => b.NumCopies);
+                resultTable = resultTable.OrderBy(b => b.Count);
+                break;
+
+            case "Status":
+                resultTable = resultTable.OrderBy(b => b.Status);
                 break;
 
             default:
                 break;
         }
 
-        tempBookResult = tempBookResult.Where(b => b.Status.Contains("Coming Soon"));
-        bookResult = tempBookResult.ToList();
+        resultTable = resultTable.Where(b => b.Status.Contains("Coming Soon"));
+
+        var tempList = resultTable.ToList();
+        bookResult.Clear();
+        foreach (var i in tempList)
+        {
+            bookResult.Add(new BookCount(i.Title, i.Author, i.ISBN, i.Status, i.Count));
+        }
         StateHasChanged();
     }
 

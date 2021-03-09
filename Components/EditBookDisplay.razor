@@ -14,38 +14,32 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <EditForm Model="@book" OnValidSubmit="@HandleValidSubmit">
+                    <EditForm Model="@bookSearch" OnValidSubmit="@HandleValidSubmit">
                         <DataAnnotationsValidator />
                         <ValidationSummary />
                         <div class="form-group">
                             <label for="title">Title: </label>
-                            <InputText id="title" class="form-control" @bind-Value="@book.Title" placeholder="Enter Book Title"></InputText>
-                            <ValidationMessage For="@(() => book.Title)" />
+                            <InputText id="title" class="form-control" @bind-Value="@bookSearch.Title" placeholder="Enter Book Title"></InputText>
+                            <ValidationMessage For="@(() => bookSearch.Title)" />
                         </div>
                         <div class="form-group">
                             <label for="author">Author: </label>
-                            <InputText id="author" class="form-control" @bind-Value="@book.Author" placeholder="Enter Author Name"></InputText>
-                            <ValidationMessage For="@(() => book.Author)" />
+                            <InputText id="author" class="form-control" @bind-Value="@bookSearch.Author" placeholder="Enter Author Name"></InputText>
+                            <ValidationMessage For="@(() => bookSearch.Author)" />
                         </div>
                         <div class="form-group">
                             <label for="ISBN">ISBN: </label>
-                            <InputText id="ISBN" class="form-control" @bind-Value="@book.ISBN" placeholder="Enter ISBN"></InputText>
-                            <ValidationMessage For="@(() => book.ISBN)" />
+                            <InputText id="ISBN" class="form-control" @bind-Value="@bookSearch.ISBN" placeholder="Enter ISBN"></InputText>
+                            <ValidationMessage For="@(() => bookSearch.ISBN)" />
                         </div>
                         <div class="form-group">
-                            <label for="Num">Number of Copies: </label>
-                            <InputNumber id="Num" class="form-control" min="1" @bind-Value="@book.NumCopies"/>
-                            <ValidationMessage For="@(() => book.NumCopies)" />
-                        </div>
-                        <div class="form-group">
-                            <label for="Status">Number of Copies: </label>
-                            <InputSelect id="Status" class="form-control" @bind-Value="@book.Status">
+                            <label for="Status">Status: </label>
+                            <InputSelect id="Status" class="form-control" @bind-Value="@bookSearch.Status">
                                 <option value="Coming Soon">Coming Soon</option>
                                 <option value="Available">Available</option>
                                 <option value="Checked Out">Checked Out</option>
                             </InputSelect>
-
-                            <ValidationMessage For="@(() => book.Status)" />
+                            <ValidationMessage For="@(() => bookSearch.Status)" />
                         </div>
 
                         <button type="submit" class="btn btn-primary">Save Book</button>
@@ -58,7 +52,9 @@
 }
 
 @code {
-    public Book book {get; set;}
+    public Book bookSearch { get; set; } = new Book();
+
+    public List<Book> bookList;
 
     public bool ShowDialog {get; set;}
 
@@ -89,13 +85,38 @@
     // changes the data for the book
     void editBook()
     {
-        connection.Entry(book).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+        foreach(var b in bookList)
+        {
+            b.Title = bookSearch.Title;
+            b.Author = bookSearch.Author;
+            b.ISBN = bookSearch.ISBN;
+            b.Status = bookSearch.Status;
+            connection.Entry(b).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+        }
+
         connection.SaveChanges();
     }
 
-    public void setBook(Book _book)
+    public void setBook(BookCount _book)
     {
-        book = _book;
+        bookSearch.Title = _book.Title;
+        bookSearch.Author = _book.Author;
+        bookSearch.ISBN = _book.ISBN;
+        bookSearch.Status = _book.Status;
+        setBookList();
         StateHasChanged();
+    }
+
+    private void setBookList()
+    {
+        var result = from b in connection.Books
+                     select b;
+
+        result = result.Where(b => b.Title.Contains(bookSearch.Title));
+        result = result.Where(b => b.Author.Contains(bookSearch.Author));
+        result = result.Where(b => b.ISBN.Contains(bookSearch.ISBN));
+        result = result.Where(b => b.Status.Contains(bookSearch.Status));
+
+        bookList = result.ToList();
     }
 }

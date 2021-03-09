@@ -104,9 +104,11 @@ using LibraryApp.Components;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 60 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Components\EditBookDisplay.razor"
+#line 54 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Components\EditBookDisplay.razor"
        
-    public Book book {get; set;}
+    public Book bookSearch { get; set; } = new Book();
+
+    public List<Book> bookList;
 
     public bool ShowDialog {get; set;}
 
@@ -137,14 +139,39 @@ using LibraryApp.Components;
     // changes the data for the book
     void editBook()
     {
-        connection.Entry(book).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+        foreach(var b in bookList)
+        {
+            b.Title = bookSearch.Title;
+            b.Author = bookSearch.Author;
+            b.ISBN = bookSearch.ISBN;
+            b.Status = bookSearch.Status;
+            connection.Entry(b).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+        }
+
         connection.SaveChanges();
     }
 
-    public void setBook(Book _book)
+    public void setBook(BookCount _book)
     {
-        book = _book;
+        bookSearch.Title = _book.Title;
+        bookSearch.Author = _book.Author;
+        bookSearch.ISBN = _book.ISBN;
+        bookSearch.Status = _book.Status;
+        setBookList();
         StateHasChanged();
+    }
+
+    private void setBookList()
+    {
+        var result = from b in connection.Books
+                     select b;
+
+        result = result.Where(b => b.Title.Contains(bookSearch.Title));
+        result = result.Where(b => b.Author.Contains(bookSearch.Author));
+        result = result.Where(b => b.ISBN.Contains(bookSearch.ISBN));
+        result = result.Where(b => b.Status.Contains(bookSearch.Status));
+
+        bookList = result.ToList();
     }
 
 #line default

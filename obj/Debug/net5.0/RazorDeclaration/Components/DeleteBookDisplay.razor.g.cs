@@ -116,16 +116,14 @@ using System.ComponentModel.DataAnnotations;
     public numInput input = new numInput();
     public List<Book> bookList;
     public bool ShowDialog { get; set; }
-
+    private int maxBooks { get; set; }
 
     [Parameter]
     public Action CloseEventCallback { get; set; }
 
     public class numInput
     {
-        [Required]
-        [Range(1, 100, ErrorMessage = "Must have enough books to delete")]
-        public int amount { get; set; }
+        public int amount { get; set; } = 1;
 
         public Book bookSearch = new Book();
     }
@@ -139,6 +137,7 @@ using System.ComponentModel.DataAnnotations;
     public void Close()
     {
         ShowDialog = false;
+        input.amount = 1;
         StateHasChanged();
     }
 
@@ -167,6 +166,7 @@ using System.ComponentModel.DataAnnotations;
         connection.SaveChanges();
     }
 
+    // save book info to form and save max amount of books
     public void setBook(BookCount _book)
     {
         input.bookSearch.Title = _book.Title;
@@ -174,9 +174,11 @@ using System.ComponentModel.DataAnnotations;
         input.bookSearch.ISBN = _book.ISBN;
         input.bookSearch.Status = _book.Status;
         setBookList();
+        maxBooks = _book.Count;
         StateHasChanged();
     }
 
+    // grab books to be deleted
     private void setBookList()
     {
         var result = from b in connection.Books

@@ -14,7 +14,7 @@
                         <ValidationSummary />
                         <div class="form-group">
                             <label for="num">Number of Books: </label>
-                            <InputNumber id="num" class="form-control" @bind-Value="@input.amount"></InputNumber>
+                            <InputNumber id="num" class="form-control" min="1" max="@maxBooks" @bind-Value="@input.amount"></InputNumber>
                         </div>
 
                         <button type="submit" class="btn btn-danger">Delete Book</button>
@@ -30,16 +30,14 @@
     public numInput input = new numInput();
     public List<Book> bookList;
     public bool ShowDialog { get; set; }
-
+    private int maxBooks { get; set; }
 
     [Parameter]
     public Action CloseEventCallback { get; set; }
 
     public class numInput
     {
-        [Required]
-        [Range(1, 100, ErrorMessage = "Must have enough books to delete")]
-        public int amount { get; set; }
+        public int amount { get; set; } = 1;
 
         public Book bookSearch = new Book();
     }
@@ -53,6 +51,7 @@
     public void Close()
     {
         ShowDialog = false;
+        input.amount = 1;
         StateHasChanged();
     }
 
@@ -81,6 +80,7 @@
         connection.SaveChanges();
     }
 
+    // save book info to form and save max amount of books
     public void setBook(BookCount _book)
     {
         input.bookSearch.Title = _book.Title;
@@ -88,9 +88,11 @@
         input.bookSearch.ISBN = _book.ISBN;
         input.bookSearch.Status = _book.Status;
         setBookList();
+        maxBooks = _book.Count;
         StateHasChanged();
     }
 
+    // grab books to be deleted
     private void setBookList()
     {
         var result = from b in connection.Books

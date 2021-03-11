@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "Z:\\Swango\\Desktop\\GitHub Repositories\\Library-App\\LibraryApp.csproj": {}
+    "C:\\Users\\Wren\\Documents\\GitHub\\Library-App\\LibraryApp.csproj": {}
   },
   "projects": {
-    "Z:\\Swango\\Desktop\\GitHub Repositories\\Library-App\\LibraryApp.csproj": {
+    "C:\\Users\\Wren\\Documents\\GitHub\\Library-App\\LibraryApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "Z:\\Swango\\Desktop\\GitHub Repositories\\Library-App\\LibraryApp.csproj",
+        "projectUniqueName": "C:\\Users\\Wren\\Documents\\GitHub\\Library-App\\LibraryApp.csproj",
         "projectName": "LibraryApp",
-        "projectPath": "Z:\\Swango\\Desktop\\GitHub Repositories\\Library-App\\LibraryApp.csproj",
-        "packagesPath": "C:\\Users\\Swango\\.nuget\\packages\\",
-        "outputPath": "Z:\\Swango\\Desktop\\GitHub Repositories\\Library-App\\obj\\",
+        "projectPath": "C:\\Users\\Wren\\Documents\\GitHub\\Library-App\\LibraryApp.csproj",
+        "packagesPath": "C:\\Users\\Wren\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Wren\\Documents\\GitHub\\Library-App\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Swango\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Wren\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -81,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     }

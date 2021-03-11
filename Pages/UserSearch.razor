@@ -1,8 +1,9 @@
 ﻿@page "/usersearch"
 @inject LibraryDBContext connection
 
+<!--this page will allow a manager to search users -->
 
-<h3 style="text-align:center">Looking for a specific book? Use the search!</h3><br/>
+<h3 style="text-align:center">Search Users:</h3><br/>
 
 <input type="text" class="form-control" @oninput="changeSearch">
 <EditForm Model="userSort">

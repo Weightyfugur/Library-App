@@ -21,6 +21,9 @@ namespace LibraryApp.Data
         // makes table called 'Books'. Data will be passed into class 'Book'
         public DbSet<Book> Books {get; set; }
 
+        //makes a table called 'Users' Data will be passed into class 'User'
+        public DbSet<User> Users {get; set; }
+
 
     }
 }

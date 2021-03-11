@@ -105,7 +105,7 @@ using LibraryApp.Components;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 60 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Pages\Check.razor"
+#line 61 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Pages\Check.razor"
  
     List<string> columnNames = new List<string> { "Title", "Author", "ISBN", "Status", "Number of Copies" };
     List<BookCount> bookResult = new List<BookCount>();

@@ -105,42 +105,41 @@ using LibraryApp.Components;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 85 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Pages\Create.razor"
-           
-        public Book newBook = new Book();
-        public List<Book> newBooks = new List<Book>();
-        public int newBookAmount { get; set; } = 1;
-        public int ISBN;
+#line 90 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Pages\Create.razor"
+       
+    public Book newBook = new Book();
+    public List<Book> newBooks = new List<Book>();
+    public int newBookAmount { get; set; } = 1;
+    public int ISBN;
 
-        void FormSubmitted()
+    void FormSubmitted()
+    {
+        // Makes a connection to the database and adds a new book, saves changes
+        // Optional usage instead of States -> connection.Books.Add(newBook);
+
+        for (int i = 0; i < newBookAmount; i++)
         {
-            // Makes a connection to the database and adds a new book, saves changes
-            // Optional usage instead of States -> connection.Books.Add(newBook);
-
-            for (int i = 0; i < newBookAmount; i++)
-            {
-                newBooks.Add(newBook);
-            }
-
-            foreach (Book b in newBooks)
-            {
-                connection.Add(addBook(b));
-                connection.SaveChanges();
-            }
-
-            nav.NavigateTo(nav.Uri, forceLoad: true);
-
+            newBooks.Add(newBook);
         }
 
-        public Book addBook(Book b)
+        foreach (Book b in newBooks)
         {
-            connection.Entry(b).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
-            b.GetType().GetProperty("Id").SetValue(b, 0);
-
-            return b;
+            connection.Add(addBook(b));
+            connection.SaveChanges();
         }
 
-    
+        nav.NavigateTo(nav.Uri, forceLoad: true);
+
+    }
+
+    public Book addBook(Book b)
+    {
+        connection.Entry(b).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
+        b.GetType().GetProperty("Id").SetValue(b, 0);
+
+        return b;
+    }
+
 
 #line default
 #line hidden

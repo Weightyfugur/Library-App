@@ -105,155 +105,154 @@ using LibraryApp.Components;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 61 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Pages\Edit.razor"
+#line 65 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Pages\Edit.razor"
  
-        List<string> columnNames = new List<string> { "Title", "Author", "ISBN", "Status", "Number of Copies" };
-        List<BookCount> bookResult = new List<BookCount>();
-        BookSort userSort = new BookSort();
+    List<string> columnNames = new List<string> { "Title", "Author", "ISBN", "Status", "Number of Copies" };
+    List<BookCount> bookResult = new List<BookCount>();
+    BookSort userSort = new BookSort();
 
-        public EditBookDisplay editModal { get; set; }
-        public DeleteBookDisplay deleteModal { get; set; }
+    public EditBookDisplay editModal { get; set; }
+    public DeleteBookDisplay deleteModal { get; set; }
 
-        // On webpage load
-        protected override async Task OnInitializedAsync()
+    // On webpage load
+    protected override async Task OnInitializedAsync()
+    {
+        search();
+    }
+
+    // When something is typed into the search box update the search class
+    void changeSearch(ChangeEventArgs s)
+    {
+        userSort.searchField = s.Value.ToString();
+        search();
+    }
+
+    // When radio button changes, update the search class
+    void changeFilter(object s)
+    {
+        userSort.filterField = (BookSearch)(int)s;
+        search();
+    }
+
+    // When sort changes, update the search class
+    void changeSort(string s)
+    {
+        // reset all column names
+        columnNames[0] = "Title";
+        columnNames[1] = "Author";
+        columnNames[2] = "ISBN";
+        columnNames[3] = "Status";
+        columnNames[4] = "Number of Copies";
+        columnNames[columnNames.IndexOf(s)] = s + " ↓";
+
+        userSort.sortField = s;
+        search();
+    }
+
+    // search function
+    void search()
+    {
+        var tempBookResult = from b in connection.Books
+                                select b;
+
+        // get the results that only contain X in the field X
+        switch (userSort.filterField)
         {
-            search();
+            case BookSearch.Title:
+                tempBookResult = tempBookResult.Where(b => b.Title.Contains(userSort.searchField));
+                break;
+
+            case BookSearch.Author:
+                tempBookResult = tempBookResult.Where(b => b.Author.Contains(userSort.searchField));
+                break;
+
+            case BookSearch.ISBN:
+                tempBookResult = tempBookResult.Where(b => b.ISBN.Contains(userSort.searchField));
+                break;
+
+            case BookSearch.Status:
+                tempBookResult = tempBookResult.Where(b => b.Status.Contains(userSort.searchField));
+                break;
+
+            default:
+                break;
         }
 
-        // When something is typed into the search box update the search class
-        void changeSearch(ChangeEventArgs s)
+        // if search field empty,
+        if (userSort.searchField == "" || userSort.searchField == null)
         {
-            userSort.searchField = s.Value.ToString();
-            search();
+            tempBookResult = from b in connection.Books
+                                select b;
         }
 
-        // When radio button changes, update the search class
-        void changeFilter(object s)
+        // get number of books
+
+        var countTable = connection.Books.GroupBy(b => new { Title = b.Title, Author = b.Author, ISBN = b.ISBN, Status = b.Status }).Select(b => new { b.Key, count = b.Count() });
+
+        var result = from b in tempBookResult
+                        join c in countTable on new { b.Title, b.Author, b.ISBN, b.Status } equals c.Key
+                        select new
+                        {
+                            Book = b,
+                            Count = c.count
+                        };
+        var resultTable = result.Select(b => new { Title = b.Book.Title, Author = b.Book.Author, ISBN = b.Book.ISBN, Status = b.Book.Status, Count = b.Count }).Distinct();
+
+
+        // sort results based on the field selected
+        switch (userSort.sortField)
         {
-            userSort.filterField = (BookSearch)(int)s;
-            search();
+            case "Title":
+                resultTable = resultTable.OrderBy(b => b.Title);
+                break;
+
+            case "Author":
+                resultTable = resultTable.OrderBy(b => b.Author);
+                break;
+
+            case "ISBN":
+                resultTable = resultTable.OrderBy(b => b.ISBN);
+                break;
+
+            case "Number of Copies":
+                resultTable = resultTable.OrderBy(b => b.Count);
+                break;
+
+            case "Status":
+                resultTable = resultTable.OrderBy(b => b.Status);
+                break;
+
+            default:
+                break;
         }
 
-        // When sort changes, update the search class
-        void changeSort(string s)
+        var tempList = resultTable.ToList();
+        bookResult.Clear();
+        foreach (var i in tempList)
         {
-            // reset all column names
-            columnNames[0] = "Title";
-            columnNames[1] = "Author";
-            columnNames[2] = "ISBN";
-            columnNames[3] = "Status";
-            columnNames[4] = "Number of Copies";
-            columnNames[columnNames.IndexOf(s)] = s + " ↓";
-
-            userSort.sortField = s;
-            search();
+            bookResult.Add(new BookCount(i.Title, i.Author, i.ISBN, i.Status, i.Count));
         }
+        StateHasChanged();
+    }
 
-        // search function
-        void search()
-        {
-            var tempBookResult = from b in connection.Books
-                                 select b;
+    class BookSort
+    {
+        public BookSearch filterField = BookSearch.Title;
+        public string searchField;
+        public string sortField = "Title";
+    }
 
-            // get the results that only contain X in the field X
-            switch (userSort.filterField)
-            {
-                case BookSearch.Title:
-                    tempBookResult = tempBookResult.Where(b => b.Title.Contains(userSort.searchField));
-                    break;
+    void editBook(BookCount book)
+    {
+        editModal.setBook(book);
+        editModal.Show();
+    }
 
-                case BookSearch.Author:
-                    tempBookResult = tempBookResult.Where(b => b.Author.Contains(userSort.searchField));
-                    break;
-
-                case BookSearch.ISBN:
-                    tempBookResult = tempBookResult.Where(b => b.ISBN.Contains(userSort.searchField));
-                    break;
-
-                case BookSearch.Status:
-                    tempBookResult = tempBookResult.Where(b => b.Status.Contains(userSort.searchField));
-                    break;
-
-                default:
-                    break;
-            }
-
-            // if search field empty,
-            if (userSort.searchField == "" || userSort.searchField == null)
-            {
-                tempBookResult = from b in connection.Books
-                                 select b;
-            }
-
-            // get number of books
-
-            var countTable = connection.Books.GroupBy(b => new { Title = b.Title, Author = b.Author, ISBN = b.ISBN, Status = b.Status }).Select(b => new { b.Key, count = b.Count() });
-
-            var result = from b in tempBookResult
-                         join c in countTable on new { b.Title, b.Author, b.ISBN, b.Status } equals c.Key
-                         select new
-                         {
-                             Book = b,
-                             Count = c.count
-                         };
-            var resultTable = result.Select(b => new { Title = b.Book.Title, Author = b.Book.Author, ISBN = b.Book.ISBN, Status = b.Book.Status, Count = b.Count }).Distinct();
-
-
-            // sort results based on the field selected
-            switch (userSort.sortField)
-            {
-                case "Title":
-                    resultTable = resultTable.OrderBy(b => b.Title);
-                    break;
-
-                case "Author":
-                    resultTable = resultTable.OrderBy(b => b.Author);
-                    break;
-
-                case "ISBN":
-                    resultTable = resultTable.OrderBy(b => b.ISBN);
-                    break;
-
-                case "Number of Copies":
-                    resultTable = resultTable.OrderBy(b => b.Count);
-                    break;
-
-                case "Status":
-                    resultTable = resultTable.OrderBy(b => b.Status);
-                    break;
-
-                default:
-                    break;
-            }
-
-            var tempList = resultTable.ToList();
-            bookResult.Clear();
-            foreach (var i in tempList)
-            {
-                bookResult.Add(new BookCount(i.Title, i.Author, i.ISBN, i.Status, i.Count));
-            }
-            StateHasChanged();
-        }
-
-        class BookSort
-        {
-            public BookSearch filterField = BookSearch.Title;
-            public string searchField;
-            public string sortField = "Title";
-        }
-
-        void editBook(BookCount book)
-        {
-            editModal.setBook(book);
-            editModal.Show();
-        }
-
-        void deleteBook(BookCount book)
-        {
-            deleteModal.setBook(book);
-            deleteModal.Show();
-        }
-    
+    void deleteBook(BookCount book)
+    {
+        deleteModal.setBook(book);
+        deleteModal.Show();
+    }
 
 #line default
 #line hidden

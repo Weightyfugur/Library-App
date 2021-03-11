@@ -104,7 +104,7 @@ using LibraryApp.Components;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 48 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Shared\NavMenu.razor"
+#line 57 "Z:\Swango\Desktop\GitHub Repositories\Library-App\Shared\NavMenu.razor"
        
     private bool collapseNavMenu = true;
 

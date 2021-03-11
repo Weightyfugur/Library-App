@@ -3,117 +3,122 @@
 @inject NavigationManager nav
 
 
+<AuthorizeView Context="createView" Roles="Manager">
+    <Authorized>
+        <div class="container" style="text-align:center;">
+            <h3>Book Creation Form</h3><br />
 
-            <div class="container" style="text-align:center;">
-                <h3>Book Creation Form</h3><br />
-
-                <!-- Form to create new book (does not check for pre-existing book atm) -->
-                <EditForm Model=@newBook OnValidSubmit="@FormSubmitted">
-                    <div class="form-group row">
-                        <div class="col">
-                            <DataAnnotationsValidator />
-                        </div>
-                        <div class="col">
-                            <ValidationSummary />
-                        </div>
-                        <div class="col"></div>
+            <!-- Form to create new book (does not check for pre-existing book atm) -->
+            <EditForm Model=@newBook OnValidSubmit="@FormSubmitted">
+                <div class="form-group row">
+                    <div class="col">
+                        <DataAnnotationsValidator />
                     </div>
-
-                    <div class="form-group row">
-                        <div class="col"></div>
-                        <div class="col">
-                            <label for="Title">Book Title </label>
-                        </div>
-                        <div class="col">
-                            <InputText id="Title" @bind-Value="@newBook.Title" />
-                        </div>
-                        <div class="col"></div>
+                    <div class="col">
+                        <ValidationSummary />
                     </div>
+                    <div class="col"></div>
+                </div>
 
-                    <div class="form-group row">
-                        <div class="col"></div>
-                        <div class="col">
-                            <label for="Author">Book Author </label>
-                        </div>
-                        <div class="col">
-                            <InputText id="Author" @bind-Value="@newBook.Author" />
-                        </div>
-                        <div class="col"></div>
+                <div class="form-group row">
+                    <div class="col"></div>
+                    <div class="col">
+                        <label for="Title">Book Title </label>
                     </div>
-
-                    <div class="form-group row">
-                        <div class="col"></div>
-                        <div class="col">
-                            <label for="ISBN">Book ISBN </label>
-                        </div>
-                        <div class="col">
-                            <InputText id="ISBN" @bind-Value="@newBook.ISBN" />
-                        </div>
-                        <div class="col"></div>
+                    <div class="col">
+                        <InputText id="Title" @bind-Value="@newBook.Title" />
                     </div>
+                    <div class="col"></div>
+                </div>
 
-                    <div class="form-group row">
-                        <div class="col"></div>
-                        <div class="col">
-                            <label for="Status">Book Status</label>
-                        </div>
-                        <div class="col">
-                            <InputSelect @bind-Value="@newBook.Status">
-                                <option value="Coming Soon">Coming Soon</option>
-                                <option value="Available">Available</option>
-                                <option value="Checked Out">Checked Out</option>
-                            </InputSelect>
-                        </div>
-                        <div class="col"></div>
+                <div class="form-group row">
+                    <div class="col"></div>
+                    <div class="col">
+                        <label for="Author">Book Author </label>
                     </div>
-
-                    <div class="form-group row">
-                        <div class="col"></div>
-                        <div class="col">
-                            <label for="ISBN">Number of Book Copies </label>
-                        </div>
-                        <div class="col">
-                            <InputNumber id="num" class="form-control" min="1" @bind-Value="@newBookAmount"></InputNumber>
-                        </div>
-                        <div class="col"></div>
+                    <div class="col">
+                        <InputText id="Author" @bind-Value="@newBook.Author" />
                     </div>
+                    <div class="col"></div>
+                </div>
 
-                    <input type="submit" value="Create Book" class="btn btn-primary" />
-                </EditForm>
-            </div>
+                <div class="form-group row">
+                    <div class="col"></div>
+                    <div class="col">
+                        <label for="ISBN">Book ISBN </label>
+                    </div>
+                    <div class="col">
+                        <InputText id="ISBN" @bind-Value="@newBook.ISBN" />
+                    </div>
+                    <div class="col"></div>
+                </div>
 
-    @code {
-        public Book newBook = new Book();
-        public List<Book> newBooks = new List<Book>();
-        public int newBookAmount { get; set; } = 1;
-        public int ISBN;
+                <div class="form-group row">
+                    <div class="col"></div>
+                    <div class="col">
+                        <label for="Status">Book Status</label>
+                    </div>
+                    <div class="col">
+                        <InputSelect @bind-Value="@newBook.Status">
+                            <option value="Coming Soon">Coming Soon</option>
+                            <option value="Available">Available</option>
+                            <option value="Checked Out">Checked Out</option>
+                        </InputSelect>
+                    </div>
+                    <div class="col"></div>
+                </div>
 
-        void FormSubmitted()
+                <div class="form-group row">
+                    <div class="col"></div>
+                    <div class="col">
+                        <label for="ISBN">Number of Book Copies </label>
+                    </div>
+                    <div class="col">
+                        <InputNumber id="num" class="form-control" min="1" @bind-Value="@newBookAmount"></InputNumber>
+                    </div>
+                    <div class="col"></div>
+                </div>
+
+                <input type="submit" value="Create Book" class="btn btn-primary" />
+            </EditForm>
+        </div>
+    </Authorized>
+    <NotAuthorized>
+        <h3>Not Authorized to View This Page.</h3>
+    </NotAuthorized>
+</AuthorizeView>
+@code {
+    public Book newBook = new Book();
+    public List<Book> newBooks = new List<Book>();
+    public int newBookAmount { get; set; } = 1;
+    public int ISBN;
+
+    void FormSubmitted()
+    {
+        // Makes a connection to the database and adds a new book, saves changes
+        // Optional usage instead of States -> connection.Books.Add(newBook);
+
+        for (int i = 0; i < newBookAmount; i++)
         {
-            // Makes a connection to the database and adds a new book, saves changes
-            // Optional usage instead of States -> connection.Books.Add(newBook);
-
-            for (int i = 0; i < newBookAmount; i++)
-            {
-                newBooks.Add(newBook);
-            }
-
-            foreach (Book b in newBooks)
-            {
-                connection.Add(addBook(b));
-                connection.SaveChanges();
-            }
-
-            nav.NavigateTo(nav.Uri, forceLoad: true);
-
+            newBooks.Add(newBook);
         }
 
-        public Book addBook(Book b)
+        foreach (Book b in newBooks)
         {
-            connection.Entry(b).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
-            b.GetType().GetProperty("Id").SetValue(b, 0);
-
-            return b;
+            connection.Add(addBook(b));
+            connection.SaveChanges();
         }
+
+        nav.NavigateTo(nav.Uri, forceLoad: true);
 
     }
+
+    public Book addBook(Book b)
+    {
+        connection.Entry(b).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
+        b.GetType().GetProperty("Id").SetValue(b, 0);
+
+        return b;
+    }
+
+}

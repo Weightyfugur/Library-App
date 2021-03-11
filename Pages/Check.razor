@@ -1,0 +1,207 @@
+﻿@page "/book/check"
+@inject LibraryDBContext connection
+
+<h3 style="text-align:center">Book Manager</h3>
+<br />
+
+<input type="text" class="form-control" @oninput="changeSearch">
+<EditForm Model="userSort">
+    <InputRadioGroup @bind-Value="@userSort.filterField">
+        <table class="table">
+            <tr>
+                @foreach (var bookSort in Enum.GetValues(typeof(BookSearch)))
+                {
+                    <td>
+                        <InputRadio Value="bookSort" @onclick="@(e => changeFilter(bookSort))" />
+                        @bookSort
+                    </td>
+                }
+            </tr>
+        </table>
+    </InputRadioGroup>
+</EditForm>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col" @onclick="@(e => changeSort("Title"))">@columnNames[0]</th>
+            <th scope="col" @onclick="@(e => changeSort("Author"))">@columnNames[1]</th>
+            <th scope="col" @onclick="@(e => changeSort("ISBN"))">@columnNames[2]</th>
+            <th scope="col" @onclick="@(e => changeSort("Status"))">@columnNames[3]</th>
+            <th scope="col" @onclick="@(e => changeSort("Number of Copies"))">@columnNames[4]</th>
+
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var book in bookResult)
+        {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.Author</td>
+                <td>@book.ISBN</td>
+                <td>@book.Status</td>
+                <td>@book.Count</td>
+                <td><button class="btn btn-secondary" type="button" @onclick="@(e => editBook(@book))">EDIT</button></td>
+                <td><button class="btn btn-danger" type="button" @onclick="@(e => deleteBook(@book))">DELETE</button></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<EditBookDisplay @ref="editModal" CloseEventCallback="@search" />
+<DeleteBookDisplay @ref="deleteModal" CloseEventCallback="@search" />
+
+
+@code
+{
+    List<string> columnNames = new List<string> { "Title", "Author", "ISBN", "Status", "Number of Copies" };
+    List<BookCount> bookResult = new List<BookCount>();
+    BookSort userSort = new BookSort();
+
+    public EditBookDisplay editModal { get; set; }
+    public DeleteBookDisplay deleteModal { get; set; }
+
+    // On webpage load
+    protected override async Task OnInitializedAsync()
+    {
+        search();
+    }
+
+    // When something is typed into the search box update the search class
+    void changeSearch(ChangeEventArgs s)
+    {
+        userSort.searchField = s.Value.ToString();
+        search();
+    }
+
+    // When radio button changes, update the search class
+    void changeFilter(object s)
+    {
+        userSort.filterField = (BookSearch)(int)s;
+        search();
+    }
+
+    // When sort changes, update the search class
+    void changeSort(string s)
+    {
+        // reset all column names
+        columnNames[0] = "Title";
+        columnNames[1] = "Author";
+        columnNames[2] = "ISBN";
+        columnNames[3] = "Status";
+        columnNames[4] = "Number of Copies";
+        columnNames[columnNames.IndexOf(s)] = s + " ↓";
+
+        userSort.sortField = s;
+        search();
+    }
+
+    // search function
+    void search()
+    {
+        var tempBookResult = from b in connection.Books
+                             select b;
+
+        // get the results that only contain X in the field X
+        switch (userSort.filterField)
+        {
+            case BookSearch.Title:
+                tempBookResult = tempBookResult.Where(b => b.Title.Contains(userSort.searchField));
+                break;
+
+            case BookSearch.Author:
+                tempBookResult = tempBookResult.Where(b => b.Author.Contains(userSort.searchField));
+                break;
+
+            case BookSearch.ISBN:
+                tempBookResult = tempBookResult.Where(b => b.ISBN.Contains(userSort.searchField));
+                break;
+
+            case BookSearch.Status:
+                tempBookResult = tempBookResult.Where(b => b.Status.Contains(userSort.searchField));
+                break;
+
+            default:
+                break;
+        }
+
+        // if search field empty,
+        if (userSort.searchField == "" || userSort.searchField == null)
+        {
+            tempBookResult = from b in connection.Books
+                             select b;
+        }
+
+        // get number of books
+
+        var countTable = connection.Books.GroupBy(b => new { Title = b.Title, Author = b.Author, ISBN = b.ISBN, Status = b.Status }).Select(b => new { b.Key, count = b.Count() });
+
+        var result = from b in tempBookResult
+                     join c in countTable on new { b.Title, b.Author, b.ISBN, b.Status } equals c.Key
+                     select new
+                     {
+                         Book = b,
+                         Count = c.count
+                     };
+        var resultTable = result.Select(b => new { Title = b.Book.Title, Author = b.Book.Author, ISBN = b.Book.ISBN, Status = b.Book.Status, Count = b.Count }).Distinct();
+
+
+        // sort results based on the field selected
+        switch (userSort.sortField)
+        {
+            case "Title":
+                resultTable = resultTable.OrderBy(b => b.Title);
+                break;
+
+            case "Author":
+                resultTable = resultTable.OrderBy(b => b.Author);
+                break;
+
+            case "ISBN":
+                resultTable = resultTable.OrderBy(b => b.ISBN);
+                break;
+
+            case "Number of Copies":
+                resultTable = resultTable.OrderBy(b => b.Count);
+                break;
+
+            case "Status":
+                resultTable = resultTable.OrderBy(b => b.Status);
+                break;
+
+            default:
+                break;
+        }
+
+        var tempList = resultTable.ToList();
+        bookResult.Clear();
+        foreach (var i in tempList)
+        {
+            bookResult.Add(new BookCount(i.Title, i.Author, i.ISBN, i.Status, i.Count));
+        }
+        StateHasChanged();
+    }
+
+    class BookSort
+    {
+        public BookSearch filterField = BookSearch.Title;
+        public string searchField;
+        public string sortField = "Title";
+    }
+
+    void editBook(BookCount book)
+    {
+        editModal.setBook(book);
+        editModal.Show();
+    }
+
+    void deleteBook(BookCount book)
+    {
+        deleteModal.setBook(book);
+        deleteModal.Show();
+    }
+}

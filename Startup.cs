@@ -10,7 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using LibraryApp.Data;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.Identity;
 
 namespace LibraryApp
 {
@@ -30,6 +30,9 @@ namespace LibraryApp
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddDbContext<LibraryDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Connection")));
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<LibraryDBContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,8 +51,13 @@ namespace LibraryApp
 
             app.UseRouting();
 
+            app.UseAuthentication();
+
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
             });

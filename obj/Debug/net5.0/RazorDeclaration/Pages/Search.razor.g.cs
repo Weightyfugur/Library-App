@@ -105,7 +105,7 @@ using LibraryApp.Components;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 54 "C:\Users\Wren\Documents\GitHub\Library-App\Pages\Search.razor"
+#line 55 "C:\Users\Wren\Documents\GitHub\Library-App\Pages\Search.razor"
  
     List<string> columnNames = new List<string> { "Title", "Author", "ISBN", "Status", "Number of Copies" };
     List<BookCount> bookResult = new List<BookCount>();
@@ -237,6 +237,15 @@ using LibraryApp.Components;
         public string sortField = "Title";
     }
 
+    void checkoutBook(BookCount book)
+        {
+            //first, check if book is available
+
+            //then check if at max num books checked out (6 for member, 12 for admin)
+
+            //if these pass, change status of book to 'checked out' and add isbn to list in user table 
+            
+        }
 
 #line default
 #line hidden

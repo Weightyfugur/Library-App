@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\calan\\Documents\\GitHub\\library\\Library-App\\LibraryApp.csproj",
+  "FilePath": "c:\\Users\\Wren\\Documents\\GitHub\\Library-App\\LibraryApp.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "5.0",
@@ -11,6 +11,72 @@
   },
   "ProjectWorkspaceState": {
     "TagHelpers": [
+      {
+        "HashCode": 1790418103,
+        "Kind": "Components.Component",
+        "Name": "LibraryApp.Pages.Create",
+        "AssemblyName": "LibraryApp",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Create"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "LibraryApp.Pages.Create"
+        }
+      },
+      {
+        "HashCode": 732536578,
+        "Kind": "Components.Component",
+        "Name": "LibraryApp.Pages.Create",
+        "AssemblyName": "LibraryApp",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "LibraryApp.Pages.Create"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "LibraryApp.Pages.Create",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -743788782,
+        "Kind": "Components.Component",
+        "Name": "LibraryApp.Pages.ComingSoon",
+        "AssemblyName": "LibraryApp",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ComingSoon"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "LibraryApp.Pages.ComingSoon"
+        }
+      },
+      {
+        "HashCode": -786500131,
+        "Kind": "Components.Component",
+        "Name": "LibraryApp.Pages.ComingSoon",
+        "AssemblyName": "LibraryApp",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "LibraryApp.Pages.ComingSoon"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "LibraryApp.Pages.ComingSoon",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
       {
         "HashCode": 2036008784,
         "Kind": "Components.Component",
@@ -41,6 +107,105 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "LibraryApp.Pages.Index",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -912039598,
+        "Kind": "Components.Component",
+        "Name": "LibraryApp.Pages.UserSearch",
+        "AssemblyName": "LibraryApp",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "UserSearch"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "LibraryApp.Pages.UserSearch"
+        }
+      },
+      {
+        "HashCode": 1169128689,
+        "Kind": "Components.Component",
+        "Name": "LibraryApp.Pages.UserSearch",
+        "AssemblyName": "LibraryApp",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "LibraryApp.Pages.UserSearch"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "LibraryApp.Pages.UserSearch",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 965480483,
+        "Kind": "Components.Component",
+        "Name": "LibraryApp.Pages.Check",
+        "AssemblyName": "LibraryApp",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Check"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "LibraryApp.Pages.Check"
+        }
+      },
+      {
+        "HashCode": 739075452,
+        "Kind": "Components.Component",
+        "Name": "LibraryApp.Pages.Check",
+        "AssemblyName": "LibraryApp",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "LibraryApp.Pages.Check"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "LibraryApp.Pages.Check",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -221976844,
+        "Kind": "Components.Component",
+        "Name": "LibraryApp.Pages.Edit",
+        "AssemblyName": "LibraryApp",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Edit"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "LibraryApp.Pages.Edit"
+        }
+      },
+      {
+        "HashCode": 1206885041,
+        "Kind": "Components.Component",
+        "Name": "LibraryApp.Pages.Edit",
+        "AssemblyName": "LibraryApp",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "LibraryApp.Pages.Edit"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "LibraryApp.Pages.Edit",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -78,68 +243,178 @@
         }
       },
       {
-        "HashCode": 954882047,
+        "HashCode": -1602869781,
         "Kind": "Components.Component",
-        "Name": "LibraryApp.Pages.Counter",
+        "Name": "LibraryApp.App",
         "AssemblyName": "LibraryApp",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "Counter"
+            "TagName": "App"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "LibraryApp.Pages.Counter"
+          "Common.TypeName": "LibraryApp.App"
         }
       },
       {
-        "HashCode": 1640727344,
+        "HashCode": 12187990,
         "Kind": "Components.Component",
-        "Name": "LibraryApp.Pages.Counter",
+        "Name": "LibraryApp.App",
         "AssemblyName": "LibraryApp",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "LibraryApp.Pages.Counter"
+            "TagName": "LibraryApp.App"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "LibraryApp.Pages.Counter",
+          "Common.TypeName": "LibraryApp.App",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
       {
-        "HashCode": -888783863,
+        "HashCode": -1966114313,
         "Kind": "Components.Component",
-        "Name": "LibraryApp.Pages.FetchData",
+        "Name": "LibraryApp.Components.DeleteBookDisplay",
         "AssemblyName": "LibraryApp",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "FetchData"
+            "TagName": "DeleteBookDisplay"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "CloseEventCallback",
+            "TypeName": "System.Action",
+            "Metadata": {
+              "Common.PropertyName": "CloseEventCallback",
+              "Components.DelegateSignature": "True"
+            }
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "LibraryApp.Pages.FetchData"
+          "Common.TypeName": "LibraryApp.Components.DeleteBookDisplay"
         }
       },
       {
-        "HashCode": 1541687118,
+        "HashCode": 1825932612,
         "Kind": "Components.Component",
-        "Name": "LibraryApp.Pages.FetchData",
+        "Name": "LibraryApp.Components.DeleteBookDisplay",
         "AssemblyName": "LibraryApp",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "LibraryApp.Pages.FetchData"
+            "TagName": "LibraryApp.Components.DeleteBookDisplay"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "CloseEventCallback",
+            "TypeName": "System.Action",
+            "Metadata": {
+              "Common.PropertyName": "CloseEventCallback",
+              "Components.DelegateSignature": "True"
+            }
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "LibraryApp.Pages.FetchData",
+          "Common.TypeName": "LibraryApp.Components.DeleteBookDisplay",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -1984118628,
+        "Kind": "Components.Component",
+        "Name": "LibraryApp.Components.EditBookDisplay",
+        "AssemblyName": "LibraryApp",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "EditBookDisplay"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "CloseEventCallback",
+            "TypeName": "System.Action",
+            "Metadata": {
+              "Common.PropertyName": "CloseEventCallback",
+              "Components.DelegateSignature": "True"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "LibraryApp.Components.EditBookDisplay"
+        }
+      },
+      {
+        "HashCode": -848807319,
+        "Kind": "Components.Component",
+        "Name": "LibraryApp.Components.EditBookDisplay",
+        "AssemblyName": "LibraryApp",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "LibraryApp.Components.EditBookDisplay"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "CloseEventCallback",
+            "TypeName": "System.Action",
+            "Metadata": {
+              "Common.PropertyName": "CloseEventCallback",
+              "Components.DelegateSignature": "True"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "LibraryApp.Components.EditBookDisplay",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -67593955,
+        "Kind": "Components.Component",
+        "Name": "LibraryApp.Shared.LoginDisplay",
+        "AssemblyName": "LibraryApp",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "LoginDisplay"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "LibraryApp.Shared.LoginDisplay"
+        }
+      },
+      {
+        "HashCode": -1829545724,
+        "Kind": "Components.Component",
+        "Name": "LibraryApp.Shared.LoginDisplay",
+        "AssemblyName": "LibraryApp",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "LibraryApp.Shared.LoginDisplay"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "LibraryApp.Shared.LoginDisplay",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -322,39 +597,6 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "LibraryApp.Shared.NavMenu",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -1602869781,
-        "Kind": "Components.Component",
-        "Name": "LibraryApp.App",
-        "AssemblyName": "LibraryApp",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "App"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "LibraryApp.App"
-        }
-      },
-      {
-        "HashCode": 12187990,
-        "Kind": "Components.Component",
-        "Name": "LibraryApp.App",
-        "AssemblyName": "LibraryApp",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "LibraryApp.App"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "LibraryApp.App",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -15950,59 +16192,154 @@
   "RootNamespace": "LibraryApp",
   "Documents": [
     {
-      "FilePath": "c:\\Users\\calan\\Documents\\GitHub\\library\\Library-App\\Shared\\SurveyPrompt.razor",
-      "TargetPath": "Shared\\SurveyPrompt.razor",
+      "FilePath": "c:\\Users\\Wren\\Documents\\GitHub\\Library-App\\Components\\DeleteBookDisplay.razor",
+      "TargetPath": "Components\\DeleteBookDisplay.razor",
       "FileKind": "component"
     },
     {
-      "FilePath": "c:\\Users\\calan\\Documents\\GitHub\\library\\Library-App\\Shared\\NavMenu.razor",
+      "FilePath": "c:\\Users\\Wren\\Documents\\GitHub\\Library-App\\Shared\\NavMenu.razor",
       "TargetPath": "Shared\\NavMenu.razor",
       "FileKind": "component"
     },
     {
-      "FilePath": "c:\\Users\\calan\\Documents\\GitHub\\library\\Library-App\\Pages\\_Host.cshtml",
-      "TargetPath": "Pages\\_Host.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\calan\\Documents\\GitHub\\library\\Library-App\\Pages\\Error.cshtml",
-      "TargetPath": "Pages\\Error.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\calan\\Documents\\GitHub\\library\\Library-App\\Pages\\Counter.razor",
-      "TargetPath": "Pages\\Counter.razor",
+      "FilePath": "c:\\Users\\Wren\\Documents\\GitHub\\Library-App\\Pages\\Edit.razor",
+      "TargetPath": "Pages\\Edit.razor",
       "FileKind": "component"
     },
     {
-      "FilePath": "c:\\Users\\calan\\Documents\\GitHub\\library\\Library-App\\_Imports.razor",
+      "FilePath": "c:\\Users\\Wren\\Documents\\GitHub\\Library-App\\Pages\\Check.razor",
+      "TargetPath": "Pages\\Check.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "c:\\Users\\Wren\\Documents\\GitHub\\Library-App\\Pages\\Shared\\_LoginPartial.cshtml",
+      "TargetPath": "Pages\\Shared\\_LoginPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Wren\\Documents\\GitHub\\Library-App\\Pages\\_ViewImports.cshtml",
+      "TargetPath": "Pages\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Wren\\Documents\\GitHub\\Library-App\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\Register.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Wren\\Documents\\GitHub\\Library-App\\Areas\\Identity\\Pages\\Account\\RegisterConfirmation.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\RegisterConfirmation.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Wren\\Documents\\GitHub\\Library-App\\_Imports.razor",
       "TargetPath": "_Imports.razor",
       "FileKind": "componentImport"
     },
     {
-      "FilePath": "c:\\Users\\calan\\Documents\\GitHub\\library\\Library-App\\Pages\\Index.razor",
-      "TargetPath": "Pages\\Index.razor",
+      "FilePath": "c:\\Users\\Wren\\Documents\\GitHub\\Library-App\\Pages\\_ViewStart.cshtml",
+      "TargetPath": "Pages\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Wren\\Documents\\GitHub\\Library-App\\Pages\\ComingSoon.razor",
+      "TargetPath": "Pages\\ComingSoon.razor",
       "FileKind": "component"
     },
     {
-      "FilePath": "c:\\Users\\calan\\Documents\\GitHub\\library\\Library-App\\Pages\\FetchData.razor",
-      "TargetPath": "Pages\\FetchData.razor",
-      "FileKind": "component"
-    },
-    {
-      "FilePath": "c:\\Users\\calan\\Documents\\GitHub\\library\\Library-App\\Pages\\Search.razor",
+      "FilePath": "c:\\Users\\Wren\\Documents\\GitHub\\Library-App\\Pages\\Search.razor",
       "TargetPath": "Pages\\Search.razor",
       "FileKind": "component"
     },
     {
-      "FilePath": "c:\\Users\\calan\\Documents\\GitHub\\library\\Library-App\\App.razor",
+      "FilePath": "c:\\Users\\Wren\\Documents\\GitHub\\Library-App\\Pages\\Shared\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Pages\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Wren\\Documents\\GitHub\\Library-App\\Pages\\_Host.cshtml",
+      "TargetPath": "Pages\\_Host.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Wren\\Documents\\GitHub\\Library-App\\Areas\\Identity\\Pages\\Account\\RegisterManager.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\RegisterManager.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Wren\\Documents\\GitHub\\Library-App\\Components\\EditBookDisplay.razor",
+      "TargetPath": "Components\\EditBookDisplay.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "c:\\Users\\Wren\\Documents\\GitHub\\Library-App\\Areas\\Identity\\Pages\\_ViewImports.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Wren\\Documents\\GitHub\\Library-App\\Pages\\UserSearch.razor",
+      "TargetPath": "Pages\\UserSearch.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "c:\\Users\\Wren\\Documents\\GitHub\\Library-App\\Pages\\Error.cshtml",
+      "TargetPath": "Pages\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Wren\\Documents\\GitHub\\Library-App\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\Login.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Wren\\Documents\\GitHub\\Library-App\\Shared\\SurveyPrompt.razor",
+      "TargetPath": "Shared\\SurveyPrompt.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "c:\\Users\\Wren\\Documents\\GitHub\\Library-App\\Pages\\Create.razor",
+      "TargetPath": "Pages\\Create.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "c:\\Users\\Wren\\Documents\\GitHub\\Library-App\\Pages\\Shared\\_Layout.cshtml",
+      "TargetPath": "Pages\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Wren\\Documents\\GitHub\\Library-App\\Areas\\Identity\\Pages\\Account\\Logout.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\Logout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Wren\\Documents\\GitHub\\Library-App\\App.razor",
       "TargetPath": "App.razor",
       "FileKind": "component"
     },
     {
-      "FilePath": "c:\\Users\\calan\\Documents\\GitHub\\library\\Library-App\\Shared\\MainLayout.razor",
+      "FilePath": "c:\\Users\\Wren\\Documents\\GitHub\\Library-App\\Pages\\Index.razor",
+      "TargetPath": "Pages\\Index.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "c:\\Users\\Wren\\Documents\\GitHub\\Library-App\\Shared\\LoginDisplay.razor",
+      "TargetPath": "Shared\\LoginDisplay.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "c:\\Users\\Wren\\Documents\\GitHub\\Library-App\\Shared\\MainLayout.razor",
       "TargetPath": "Shared\\MainLayout.razor",
       "FileKind": "component"
+    },
+    {
+      "FilePath": "c:\\Users\\Wren\\Documents\\GitHub\\Library-App\\Areas\\Identity\\Pages\\_ViewStart.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Wren\\Documents\\GitHub\\Library-App\\Areas\\Identity\\Pages\\Account\\_ViewImports.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\_ViewImports.cshtml",
+      "FileKind": "mvc"
     }
   ],
   "SerializationFormat": "0.2"

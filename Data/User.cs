@@ -8,8 +8,10 @@ namespace LibraryApp.Data
 {
     public class User
     {
-        //card num validtion goes here
-        public string Id { get; set; }
+        //card num validation goes here
+        public int Id { get; set; }
+
+        public string UserID {get; set; }
 
         public string Password {get; set; }
 

@@ -43,6 +43,7 @@
             <td>@book.ISBN</td>
             <td>@book.Status</td>
             <td>@book.Count</td>
+            <td><button class="btn btn-secondary" type="button" @onclick="@(e => checkoutBook(@book))">Check Out</button></td>
         </tr>
         }
     </tbody>
@@ -182,4 +183,12 @@
         public string sortField = "Title";
     }
 
+    void checkoutBook(BookCount book)
+        {
+            //first, check if book is available
+
+            //then check if at max num books checked out (6 for member, 12 for admin)
+
+            //if these pass, change status of book to 'checked out' and add isbn+userID to list in user table 
+        }
 }
